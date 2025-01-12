@@ -29,7 +29,7 @@ public static class muela
         Console.WriteLine("Press any key to continue");
         Console.ReadKey();
         ///por turnos se escogen los slimes
-       // Console.WriteLine("QUE GANE EL MEJOR!");
+       // 
 
     }
 }

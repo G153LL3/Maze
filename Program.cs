@@ -129,7 +129,7 @@ public static class Program
             for (int fhs = 0; fhs < fichas.Length; fhs++) //muestro las 6 fichas
             {
                 if (selected[fhs]) continue;
-                Console.WriteLine("* " +(1+fhs)+ "- " + fichas[fhs].name + " * speed: " + fichas[fhs].speed + " * " + fichas[fhs].skill_desc + " Frozen time " + fichas[fhs].Frozen_time +" * ");
+                Console.WriteLine(" " +(1+fhs)+ "- " + fichas[fhs].name + " speed: " + fichas[fhs].speed + " skill: " + fichas[fhs].skill_desc + " frozen time " + fichas[fhs].Frozen_time +" * ");
             }
             Console.WriteLine("***************************");
 
@@ -189,10 +189,11 @@ public static class Program
         StringBuilder buffer = new StringBuilder(); //evitar pantallazos
 
         int last_operation = 0, turno = 1, jugador = -1;
-
+        int  all_no_skill = 0;
         while (true)
         {
-            for(int tt = 0;tt <= 1; tt++)
+            
+            for(int tt = 0;; tt++)
             {        
                 jugador+=1;  
                 jugador%=2;
@@ -205,35 +206,38 @@ public static class Program
                     if(fichas[i] == null || fichas[i].player != jugador)continue;
                     buffer.AppendLine(fichas[i].name+" "+fichas[i].id);
                 }
-                buffer.AppendLine("seleccione el slime que desea usar");
+                buffer.AppendLine("Seleccione el slime que desea usar");
                 AnsiConsole.Write(buffer.ToString());
                 buffer.Clear();
-                tt = int.Parse(Console.ReadLine());
+                int ttt = int.Parse(Console.ReadLine());
 
                 ficha fic = null;
                 int fi_pos = 0;
-
-                buffer.AppendLine("Desea usar la habilidad del slime ? Y/N");
-                AnsiConsole.Write(buffer.ToString());
-                buffer.Clear();
-                
-                char ky = char.Parse(Console.ReadLine());
-
-
                 for(int i = 0; i < fichas.Length; i++)
                 {
                     if(fichas[i] == null)continue;
-                    if(fichas[i].id == tt){
+                    if(fichas[i].id == ttt){
                         fic = fichas[i];
                         fi_pos = i;
                     }
                 }
                 
-                if(ky == 'Y' || ky == 'y'){
-                    //fic.skill(ref fichas);
+                char ky='N';
+                if (fic.act_time <= 0 && all_no_skill == 0){
+                    buffer.AppendLine("Ecriba Yes si desea usar la habilidad de este slime en este turno y No en caso contario");
+                    AnsiConsole.Write(buffer.ToString());
+                    buffer.Clear();
+                    ky = char.Parse(Console.ReadLine());
                 }
+                if(all_no_skill == 1)all_no_skill = 0;
 
+                int op = 0;
                 for(int vel = 0; vel < fic.speed; vel ++){
+                    if(vel == 0 )
+                    if(ky == 'Y' || ky == 'y'){
+                        fic.act_time = fic.Frozen_time+1;
+                        fic.skill(ref all_no_skill,ref op,ref vel,ref fichas);
+                    }
                     buffer.Clear();
                     Mostrar.MostrarLaberinto(buffer, n,turno, ref fichas, ref laberinto);
 
@@ -242,11 +246,11 @@ public static class Program
                     buffer.AppendLine();
                     if (last_operation == 1)
                     {
-                        buffer.Append("haz caido en una trampa");
+                        buffer.Append("Haz caido en una trampa :( ");
                     } 
                     else if (last_operation == 2)
                     {
-                        buffer.Append("te haz teletransportado a la salida");
+                        buffer.Append("Te haz teletransportado a la salida :) ");
                     }
 
                     if(last_operation != 0)last_operation = 0;
@@ -275,11 +279,17 @@ public static class Program
                     else if (tecla.Key == ConsoleKey.RightArrow)
                         fic.MoverFicha(0, 1, n, ref laberinto, ref last_operation);
                     if(last_operation < 4){
+
                         vel--;
                     } else {
                         last_operation ^= 4;
                     }
 
+                }
+                jugador += op;
+                if(fic != null){
+                    fic.t_affect = 1;
+                    fic.act_time-=1;
                 }
                 fichas[fi_pos] = fic;
                 if(turno == 1)turno = 2;

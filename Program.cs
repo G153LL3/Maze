@@ -68,22 +68,6 @@ public static class Program
     }
 
     static void Makelab () // hago el laberinto
-    static ficha fi1 = new ficha(0,1,n,n-1,1),fi2=new ficha(n,n-1,0,1,0);
-    static ficha[] fichas = {fi1,fi2};
-
-    static void MainMenu()
-    {
-        Console.Clear();
-        Console.WriteLine("***********");
-        Console.WriteLine("*Main Menu*");
-        Console.WriteLine("***********");
-        Console.WriteLine("* 1-Jugar *");
-        Console.WriteLine("* 2-Salir *");
-        Console.WriteLine("***********");
-
-    }
-
-    static void Makelab ()
     {
         for (int i = 0; i < 1000; i++)    
         {
@@ -145,7 +129,7 @@ public static class Program
             for (int fhs = 0; fhs < fichas.Length; fhs++) //muestro las 6 fichas
             {
                 if (selected[fhs]) continue;
-                Console.WriteLine("* " +(1+fhs)+ "- " + fichas[fhs].name + " * speed: " + fichas[fhs].speed + " * " + fichas[fhs].skill_desc + " * ");
+                Console.WriteLine("* " +(1+fhs)+ "- " + fichas[fhs].name + " * speed: " + fichas[fhs].speed + " * " + fichas[fhs].skill_desc + " Frozen time " + fichas[fhs].Frozen_time +" * ");
             }
             Console.WriteLine("***************************");
 
@@ -206,27 +190,6 @@ public static class Program
 
         int last_operation = 0, turno = 1, jugador = -1;
 
-        ConsoleKeyInfo key;
-        MainMenu();
-        do{
-            key = Console.ReadKey();
-            if(key.Key == ConsoleKey.D1)
-            {
-                break;
-            }
-            if(key.Key == ConsoleKey.D2)
-            {
-                return 0;
-            }
-        }while(key.Key != ConsoleKey.D1 && key.Key != ConsoleKey.D2);
-        
-        Makelab();
-       
-        Trampas.Trampa(ref laberinto, n);
-        Teletransportador.Tele(ref laberinto, n);
-
-        StringBuilder buffer = new StringBuilder();
-
         while (true)
         {
             for(int tt = 0;tt <= 1; tt++)
@@ -267,7 +230,7 @@ public static class Program
                 }
                 
                 if(ky == 'Y' || ky == 'y'){
-                    fic.skill(,ref fichas);
+                    //fic.skill(ref fichas);
                 }
 
                 for(int vel = 0; vel < fic.speed; vel ++){
@@ -286,8 +249,6 @@ public static class Program
                         buffer.Append("te haz teletransportado a la salida");
                     }
 
-
-
                     if(last_operation != 0)last_operation = 0;
                     Console.Clear();
                     AnsiConsole.Write(buffer.ToString());
@@ -302,8 +263,7 @@ public static class Program
                       
                         fic = null;
                         break;
-                    }
-                        
+                    }       
                      
                     ConsoleKeyInfo tecla = Console.ReadKey(true);
                     if (tecla.Key == ConsoleKey.UpArrow)
@@ -328,32 +288,6 @@ public static class Program
             /// si el tiempo de enfriamiento es dif de 0 y jugo el jugador que tiene la hab correspondiente a ese tiempo de enfriamiento
             ///tiempo de enfriamiento --  
        }     
-            for(int i = 0; i < 2; i++ )
-            { // itera por todas las fichas
-                ficha fic = fichas[i];
-                for(int vel = 0; vel < fic.speed; vel ++){
-                    buffer.Clear();
-                    Mostrar.MostrarLaberinto(buffer, n, ref fichas, ref laberinto);
-                    Console.Clear();
-                    Console.Write(buffer.ToString());
-                    if (fic.posX == fic.FinX && fic.posY == fic.FinY) 
-                    {
-                        return 0;
-                    }
-                    ConsoleKeyInfo tecla = Console.ReadKey(true);
-                    if (tecla.Key == ConsoleKey.UpArrow)
-                        fic.MoverFicha(-1, 0, n, ref laberinto);
-                    else if (tecla.Key == ConsoleKey.DownArrow)
-                        fic.MoverFicha(1, 0, n, ref laberinto);
-                    else if (tecla.Key == ConsoleKey.LeftArrow)
-                        fic.MoverFicha(0, -1, n, ref laberinto );
-                    else if (tecla.Key == ConsoleKey.RightArrow)
-                        fic.MoverFicha(0, 1, n, ref laberinto); 
-                }
-                fichas[i] = fic;
-            }    
-       }
-     
        return 0;        
     }
 }

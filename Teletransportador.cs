@@ -9,7 +9,7 @@ public static class Teletransportador
         {
             int x = rand.Next(n);
             int y = rand.Next(n);
-            if (laberinto[x, y] != '█' && laberinto[x, y] != 'T' && laberinto[x, y] != '☻' && laberinto[x, y]!= 'P' && laberinto[x, y] != '☺')
+            if (laberinto[x, y] != '█' && laberinto[x, y] != 'T' && laberinto[x, y] != 'H' && laberinto[x, y] != 'O' && laberinto[x, y] != '☻' && laberinto[x, y]!= 'P' && laberinto[x, y] != '☺')
             {
                 cont+=1;
                 laberinto[x, y] = 'P';

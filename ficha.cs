@@ -14,7 +14,8 @@ public class ficha
     number,
     player, // el player que es dueNo de esta ficha
     Frozen_time,
-    id;
+    id,strong = 0,
+    brk=0;
 
     public string 
     ico,
@@ -35,7 +36,7 @@ public class ficha
         }else if(this.id == 2){
             tramp_affect();
         }else if(this.id == 3){
-
+            this.strong = 1;
         } else if(this.id == 4){
             int x = Begin(ref fichas);    
             Console.Write(x);
@@ -74,11 +75,23 @@ public class ficha
     {
         int nuevaposX = this.posX + deltaX;
         int nuevaposY = this.posY + deltaY;
-        if (nuevaposX >= 0 && nuevaposX < n+1 && nuevaposY >= 0 && nuevaposY < n+1 && laberinto[nuevaposX, nuevaposY] != '█')
+        if (nuevaposX >= 0 && nuevaposX < n+1 && nuevaposY >= 0 && nuevaposY < n+1 && (laberinto[nuevaposX, nuevaposY] != '█' || this.strong == 1))
         {
             lstop ^= 4; 
             this.posX = nuevaposX;
             this.posY = nuevaposY;
+            if(laberinto[this.posX, this.posY] == '█')laberinto[this.posX, this.posY] = ' ';
+            if (laberinto[this.posX, this.posY] == 'H' && t_affect > 0){
+                lstop ^=1;     
+                laberinto[this.posX, this.posY] = ' ';
+                this.speed /= 2;
+            }
+            if (laberinto[this.posX, this.posY] == 'O' && t_affect > 0){
+                lstop ^=1;     
+                laberinto[this.posX, this.posY] = ' ';
+                this.brk = 1;
+            }
+            
             if (laberinto[this.posX, this.posY] == 'T' && t_affect > 0)
             {
                // Console.WriteLine("Caiste en un trampa");
@@ -113,9 +126,6 @@ public class ficha
         this.t_affect = 0;
     }// recordar marcar al final del turno
     
-    public void unbreaking(){ // no afectan las skill hasta el proximo turno
-
-    }
 
     public int Begin(ref ficha[] fichas){ // mueve una ficha del rival al inicio
         Console.WriteLine("Diga que ficha desea mover al inicio");

@@ -184,7 +184,10 @@ public static class Program
         }
         
         Makelab(); // se hace el lab for
-        Trampas.Trampa(ref laberinto, n); //trampas
+        Trampas.Trampa1(ref laberinto, n); //trampas
+        Trampas.Trampa2(ref laberinto, n); //trampas
+        Trampas.Trampa3(ref laberinto, n); //trampas
+
         Teletransportador.Tele(ref laberinto, n); //teletranportadores 
         StringBuilder buffer = new StringBuilder(); //evitar pantallazos
 
@@ -279,10 +282,14 @@ public static class Program
                     else if (tecla.Key == ConsoleKey.RightArrow)
                         fic.MoverFicha(0, 1, n, ref laberinto, ref last_operation);
                     if(last_operation < 4){
-
                         vel--;
                     } else {
                         last_operation ^= 4;
+                    }
+                    if(fic.brk == 1)
+                    {
+                        fic.brk = 0;
+                        break;
                     }
 
                 }

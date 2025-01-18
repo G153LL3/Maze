@@ -7,9 +7,14 @@ public class Trampas{
        int cont = 0;
        while (cont < 2) 
        {
-        int x = rand.Next(n);
-        int y = rand.Next(n);
-         if (laberinto[x, y] != '█' && laberinto[x, y] != 'T')
+         int x = rand.Next(n);
+         int y = rand.Next(n);
+         int no_en_inicio = 0;
+         if (x == 0 && y == 1 || x == n && y == n-1)
+         {
+           no_en_inicio = 1;
+         }
+         if (laberinto[x, y] != '█' && laberinto[x, y] != 'T' && no_en_inicio != 1)
          {
             cont+=1;
             laberinto[x, y] =  'T';
@@ -22,12 +27,17 @@ public class Trampas{
        int cont = 0;
        while (cont < 2) 
        {
-        int x = rand.Next(n);
-        int y = rand.Next(n);
-         if (laberinto[x, y] != '█' && laberinto[x, y] != 'T' && laberinto[x, y] != 'H')
+         int x = rand.Next(n);
+         int y = rand.Next(n);
+         int no_en_inicio = 0;
+         if (x == 0 && y == 1 || x == n && y == n-1)
          {
-            cont+=1;
-            laberinto[x, y] = 'H';
+           no_en_inicio = 1;
+         }
+         if (laberinto[x, y] != '█' && laberinto[x, y] != 'T' && laberinto[x, y] != 'H' && no_en_inicio != 1)
+         {
+               cont+=1;
+               laberinto[x, y] = 'H';
          }
        }
     }
@@ -37,9 +47,15 @@ public class Trampas{
        int cont = 0;
        while (cont < 2) 
        {
-        int x = rand.Next(n);
-        int y = rand.Next(n);
-         if (laberinto[x, y] != '█' && laberinto[x, y] != 'T' && laberinto[x, y] != 'H' && laberinto[x, y] != 'O')
+         int x = rand.Next(n);
+         int y = rand.Next(n);
+         int no_en_inicio = 0;
+         if (x == 0 && y == 1 || x == n && y == n-1)
+         {
+           no_en_inicio = 1;
+         }
+
+         if (laberinto[x, y] != '█' && laberinto[x, y] != 'T' && laberinto[x, y] != 'H' && laberinto[x, y] != 'O' && no_en_inicio != 1)
          {
             cont+=1;
             laberinto[x, y] =  'O';

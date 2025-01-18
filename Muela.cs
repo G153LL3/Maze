@@ -5,12 +5,12 @@ public static class muela
     {
         Console.Clear();
         Console.WriteLine(" ");
-        Console.WriteLine("Beatrix ha vuelto a perder sus slimes estos escparon");
+        Console.WriteLine("Beatrix ha vuelto a perder sus slimes, estos escaparon");
         Console.WriteLine("del rancho y ahora se encuentran  atrapados  en   un");
         Console.WriteLine("laberinto en la lejana pradera. Para  recuperar  sus");
         Console.WriteLine("slimes Beatrix necesita de ayuda. Debera guiar   sus");
 
-        Console.WriteLine("slimes hasta el extremo opuesto del laberinto. Veamos que");
+        Console.WriteLine("slimes hasta la salida del laberinto. Veamos que");
         Console.WriteLine("jugador lo  logra primero.");
         Console.WriteLine(" ");
         Console.WriteLine("Press any key to continue");
@@ -22,14 +22,12 @@ public static class muela
         Console.WriteLine("experimentos con los slimes y cada uno ha desarrollado una");
         Console.WriteLine("habilidad unica que le podria facilitar el recorrido");
         Console.WriteLine("tambien podria encontrarse con teletransportadores que lo");
-        Console.WriteLine("lleven a la salida y armas capaces de destruir las paredes");
-        Console.WriteLine("tenga cuidado con las trampas, la lejana pradera es un lugar peligroso.");
+        Console.WriteLine("lleven a la salida y tenga cuidado con las trampas, la lejana");
+        Console.WriteLine("pradera es un lugar peligroso.");
 
         Console.WriteLine(" ");
         Console.WriteLine("Press any key to continue");
         Console.ReadKey();
         ///por turnos se escogen los slimes
-       // 
-
     }
 }

@@ -84,7 +84,7 @@ public class ficha
             if (laberinto[this.posX, this.posY] == 'H' && t_affect > 0){
                 lstop ^=1;     
                 laberinto[this.posX, this.posY] = ' ';
-                this.speed /= 2;
+                this.speed /= 2; //error pq se muestra mal
             }
             if (laberinto[this.posX, this.posY] == 'O' && t_affect > 0){
                 lstop ^=1;     

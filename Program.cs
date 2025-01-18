@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Text;
 using Spectre.Console;
-
 public static class Program
 {
-    public static int n = 10;
+    //tengo 2 bugs 
+    //el primero es en la trampa H no me resta la velocidad bien, o sea en la cantidad de movimientos se resta mal y luego sube
+    //el segundo es que creoque a avces escribe q caiste en una trampa tarde
+    ///el errot creo que esta cuando se muestra la cant de mov restantes y cae en trampas (T y H)
+    
+    public static int n = 20;
     static int[,] lab = new int[1000, 1000];
     public static int[] pl_cnt = {2,2};
     static bool[,] vis = new bool[1000, 1000];
@@ -16,9 +20,9 @@ public static class Program
 
     const string skill1_txt = "duplica velocidad";
     const string skill2_txt = "las trampas no le afectan";
-    const string skill3_txt = "inmunidad ante habilidades";
+    const string skill3_txt = "destruye las paredes del laberinto";
     const string skill4_txt = "regresa una ficha al inicio";
-    const string skill5_txt = "congela las ficha rival por 1 turno";
+    const string skill5_txt = "congela las fichas rivales";
     const string skill6_txt = "impide que el rival use habilidades";
 
     static int cant_fichas = 2;
@@ -32,12 +36,12 @@ public static class Program
         fichas[0].skill_desc = skill1_txt;
 
         fichas[1].name = "SlimeTramp";
-        fichas[1].speed = 10;
+        fichas[1].speed = 14;
         fichas[1].Frozen_time = 3;
         fichas[1].skill_desc = skill2_txt;
 
-        fichas[2].name = "SlimeUnbreaking";
-        fichas[2].speed = 20;
+        fichas[2].name = "SlimeStrong";
+        fichas[2].speed = 10;
         fichas[2].Frozen_time = 1;
         fichas[2].skill_desc = skill3_txt;
 
@@ -129,11 +133,11 @@ public static class Program
             for (int fhs = 0; fhs < fichas.Length; fhs++) //muestro las 6 fichas
             {
                 if (selected[fhs]) continue;
-                Console.WriteLine(" " +(1+fhs)+ "- " + fichas[fhs].name + " speed: " + fichas[fhs].speed + " skill: " + fichas[fhs].skill_desc + " frozen time " + fichas[fhs].Frozen_time +" * ");
+                Console.WriteLine(" " +(1+fhs)+ "- " + fichas[fhs].name + " speed: " + fichas[fhs].speed + " skill: " + fichas[fhs].skill_desc + " frozen time: " + fichas[fhs].Frozen_time +"  ");
             }
             Console.WriteLine("***************************");
 
-            Console.WriteLine("Jugador "+(i%2+1)+" Seleccione una slime: ");
+            Console.WriteLine("Jugador "+(i%2+1)+" Seleccione un slime: ");
             key = Console.ReadKey(); //el jugador selecciona sus slimes
             if(key.Key == ConsoleKey.D1)
             {
@@ -176,8 +180,8 @@ public static class Program
                 fichas[5].id = 6;
             }
         }
-        for(int i = 0; i < 6; i++)
-        {
+        for (int i = 0; i < 6; i++)
+        { 
             fichas[i].init();
             if (selected[i] == false)
                 fichas[i] = null;
@@ -195,18 +199,18 @@ public static class Program
         int  all_no_skill = 0;
         while (true)
         {
-            
-            for(int tt = 0;; tt++)
+            for (int tt = 0;; tt++)
             {        
                 jugador+=1;  
                 jugador%=2;
                 Console.Clear();    
                 buffer.Clear();
-                Mostrar.MostrarLaberinto(buffer, n,turno, ref fichas, ref laberinto);
+                Mostrar.MostrarLaberinto(buffer, n, turno, ref fichas, ref laberinto);
                 buffer.AppendLine("Jugador "+(1+jugador)+" tus slimes: ");
 
-                for(int i = 0; i < fichas.Length; i++){
-                    if(fichas[i] == null || fichas[i].player != jugador)continue;
+                for (int i = 0; i < fichas.Length; i++)
+                {
+                    if (fichas[i] == null || fichas[i].player != jugador) continue;
                     buffer.AppendLine(fichas[i].name+" "+fichas[i].id);
                 }
                 buffer.AppendLine("Seleccione el slime que desea usar");
@@ -216,28 +220,32 @@ public static class Program
 
                 ficha fic = null;
                 int fi_pos = 0;
-                for(int i = 0; i < fichas.Length; i++)
+                for (int i = 0; i < fichas.Length; i++)
                 {
-                    if(fichas[i] == null)continue;
-                    if(fichas[i].id == ttt){
+                    if (fichas[i] == null) continue;
+                    if (fichas[i].id == ttt)
+                    {
                         fic = fichas[i];
                         fi_pos = i;
                     }
                 }
                 
-                char ky='N';
-                if (fic.act_time <= 0 && all_no_skill == 0){
-                    buffer.AppendLine("Ecriba Yes si desea usar la habilidad de este slime en este turno y No en caso contario");
+                string ky = "no";
+                if (fic.act_time <= 0 && all_no_skill == 0)
+                {
+                    buffer.AppendLine("Ecriba yes si desea usar la habilidad de este slime en este turno y no en caso contario");
                     AnsiConsole.Write(buffer.ToString());
                     buffer.Clear();
-                    ky = char.Parse(Console.ReadLine());
+                    ky = Console.ReadLine();
                 }
-                if(all_no_skill == 1)all_no_skill = 0;
+                if (all_no_skill == 1) all_no_skill = 0;
 
                 int op = 0;
-                for(int vel = 0; vel < fic.speed; vel ++){
-                    if(vel == 0 )
-                    if(ky == 'Y' || ky == 'y'){
+                for (int vel = 0; vel < fic.speed; vel ++)
+                {
+                    if (vel == 0 )
+                    if (ky == "yes")
+                    {
                         fic.act_time = fic.Frozen_time+1;
                         fic.skill(ref all_no_skill,ref op,ref vel,ref fichas);
                     }
@@ -256,14 +264,15 @@ public static class Program
                         buffer.Append("Te haz teletransportado a la salida :) ");
                     }
 
-                    if(last_operation != 0)last_operation = 0;
+                    if (last_operation != 0) last_operation = 0;
                     Console.Clear();
                     AnsiConsole.Write(buffer.ToString());
                     if (fic.posX == fic.FinX && fic.posY == fic.FinY) 
                     {
                         pl_cnt[fic.player]--;
-                        if(pl_cnt[fic.player] == 0)
+                        if (pl_cnt[fic.player] == 0)
                         {
+                            Console.WriteLine();
                             Console.WriteLine("HA GANADO EL JUGADOR " + (jugador+1));
                             return 0;
                         }
@@ -286,7 +295,7 @@ public static class Program
                     } else {
                         last_operation ^= 4;
                     }
-                    if(fic.brk == 1)
+                    if (fic.brk == 1)
                     {
                         fic.brk = 0;
                         break;
@@ -294,12 +303,13 @@ public static class Program
 
                 }
                 jugador += op;
-                if(fic != null){
+                if (fic != null)
+                {
                     fic.t_affect = 1;
                     fic.act_time-=1;
                 }
                 fichas[fi_pos] = fic;
-                if(turno == 1)turno = 2;
+                if (turno == 1) turno = 2;
                 else turno = 1;
             }
             /// si el tiempo de enfriamiento es dif de 0 y jugo el jugador que tiene la hab correspondiente a ese tiempo de enfriamiento
@@ -308,6 +318,3 @@ public static class Program
        return 0;        
     }
 }
-    /**
-          
-    */

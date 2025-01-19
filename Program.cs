@@ -8,6 +8,7 @@ public static class Program
     static int[,] lab = new int[1000, 1000]; //lab de 1 y 0
     public static int[] pl_cnt = {2,2};
     static bool[,] vis = new bool[1000, 1000]; //verifica si una pos ya fue vis
+    
     static char[,] laberinto = new char [1000, 1000]; //laberinto
     static ficha[] fichas = {
         new ficha("☺"),new ficha("☻"),new ficha("☻"),
@@ -26,6 +27,7 @@ public static class Program
 
     static void MainMenu () // menu principal
     {
+        Console.OutputEncoding = System.Text.Encoding.UTF8; //usar emojis
         
         fichas[0].name = "FastSlime";
         fichas[0].speed = 15;

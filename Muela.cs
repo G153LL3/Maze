@@ -1,10 +1,12 @@
 using System;
+using Spectre.Console;
 public static class muela
 {
     public static void  inicio()
     {
         Console.Clear();
         Console.WriteLine(" ");
+       
         Console.WriteLine("Beatrix ha vuelto a perder sus slimes, estos escaparon");
         Console.WriteLine("del rancho y ahora se encuentran  atrapados  en   un");
         Console.WriteLine("laberinto en la lejana pradera. Para  recuperarlos");

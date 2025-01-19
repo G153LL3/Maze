@@ -1,5 +1,6 @@
 using System;
 using System.Text;
+using Spectre.Console;
 public static class Mostrar
 {  
    public static void MostrarLaberinto(StringBuilder buffer, int n, int turno,ref ficha[] fichas, ref char[,] laberinto)
@@ -27,6 +28,7 @@ public static class Mostrar
                         if(cnt < 2)
                         {
                             buffer.Append(' ');
+                         
                         }
                     }
                 }

@@ -59,15 +59,7 @@ public static class Program
         fichas[5].Frozen_time = 2;
         fichas[5].skill_desc = skill6_txt;
 
-
-        Console.Clear();
-        Console.WriteLine("***********");
-        Console.WriteLine("*Menu Principal*");
-        Console.WriteLine("***********");
-        Console.WriteLine("* 1-Jugar *");
-        Console.WriteLine("* 2-Salir *");
-        Console.WriteLine("***********");
-        
+        muela.menu();        
     }
 
     static void Makelab () // hago el laberinto

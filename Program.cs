@@ -3,19 +3,9 @@ using System.Text;
 using Spectre.Console;
 public static class Program
 {
-<<<<<<< HEAD
     
     public static int n = 30; //tamaño del lab
     static int[,] lab = new int[1000, 1000]; //lab de 1 y 0
-=======
-    //tengo 2 bugs 
-    //el primero es en la trampa H no me resta la velocidad bien, o sea en la cantidad de movimientos se resta mal y luego sube
-    //el segundo es que creoque a avces escribe q caiste en una trampa tarde
-    ///el errot creo que esta cuando se muestra la cant de mov restantes y cae en trampas (T y H)
-    
-    public static int n = 20;
-    static int[,] lab = new int[1000, 1000];
->>>>>>> 80b3520f835cbdc8a96ad4edfee2afdfb4f8acef
     public static int[] pl_cnt = {2,2};
     static bool[,] vis = new bool[1000, 1000]; //verifica si una pos ya fue vis
     
@@ -29,15 +19,9 @@ public static class Program
     const string skill1_txt = "duplica su velocidad";
     const string skill2_txt = "las trampas no le afectan";
     const string skill3_txt = "destruye las paredes del laberinto";
-<<<<<<< HEAD
     const string skill4_txt = "regresa un slime del oponente al inicio";
     const string skill5_txt = "congela los slimes del oponente";
     const string skill6_txt = "impide que el rival use las habilidades de sus slimes";
-=======
-    const string skill4_txt = "regresa una ficha al inicio";
-    const string skill5_txt = "congela las fichas rivales";
-    const string skill6_txt = "impide que el rival use habilidades";
->>>>>>> 80b3520f835cbdc8a96ad4edfee2afdfb4f8acef
 
     static int cant_fichas = 2; //cada jugador tiene 2 fichas
 
@@ -50,20 +34,12 @@ public static class Program
         fichas[0].Frozen_time = 2;
         fichas[0].skill_desc = skill1_txt;
 
-<<<<<<< HEAD
         fichas[1].name = "TrampSlime";
-=======
-        fichas[1].name = "SlimeTramp";
->>>>>>> 80b3520f835cbdc8a96ad4edfee2afdfb4f8acef
         fichas[1].speed = 14;
         fichas[1].Frozen_time = 3;
         fichas[1].skill_desc = skill2_txt;
 
-<<<<<<< HEAD
         fichas[2].name = "StrongSlime";
-=======
-        fichas[2].name = "SlimeStrong";
->>>>>>> 80b3520f835cbdc8a96ad4edfee2afdfb4f8acef
         fichas[2].speed = 10;
         fichas[2].Frozen_time = 1;
         fichas[2].skill_desc = skill3_txt;
@@ -146,11 +122,7 @@ public static class Program
             for (int fhs = 0; fhs < fichas.Length; fhs++) //muestro las 6 fichas
             {
                 if (selected[fhs]) continue;
-<<<<<<< HEAD
                 Console.WriteLine(" " +(1+fhs)+ "- " + fichas[fhs].name + ". Velocidad: " + fichas[fhs].speed + ". Habilidad: " + fichas[fhs].skill_desc + ". Tiempo de enfriamiento: " + fichas[fhs].Frozen_time +".  ");
-=======
-                Console.WriteLine(" " +(1+fhs)+ "- " + fichas[fhs].name + " speed: " + fichas[fhs].speed + " skill: " + fichas[fhs].skill_desc + " frozen time: " + fichas[fhs].Frozen_time +"  ");
->>>>>>> 80b3520f835cbdc8a96ad4edfee2afdfb4f8acef
             }
             Console.WriteLine("***************************");
 
@@ -216,10 +188,7 @@ public static class Program
         int  all_no_skill = 0;
         while (true)
         {
-<<<<<<< HEAD
             
-=======
->>>>>>> 80b3520f835cbdc8a96ad4edfee2afdfb4f8acef
             for (int tt = 0;; tt++)
             {        
                 jugador+=1;  
@@ -260,7 +229,6 @@ public static class Program
                     ky = Console.ReadLine();
                 }
                 if (all_no_skill == 1) all_no_skill = 0;
-<<<<<<< HEAD
                 bool frst = true;
                 int op = 0, res = fic.speed;
                 for (int vel = 0; vel < res; vel ++)
@@ -269,15 +237,6 @@ public static class Program
                     if (ky == "yes")
                     {
                         frst = false;
-=======
-
-                int op = 0;
-                for (int vel = 0; vel < fic.speed; vel ++)
-                {
-                    if (vel == 0 )
-                    if (ky == "yes")
-                    {
->>>>>>> 80b3520f835cbdc8a96ad4edfee2afdfb4f8acef
                         fic.act_time = fic.Frozen_time+1;
                         fic.skill(ref all_no_skill,ref op,ref vel,ref fichas);
                     }
@@ -322,7 +281,6 @@ public static class Program
                     {
                         last_operation ^= 4;
                     }
-<<<<<<< HEAD
                     buffer.Clear();
                     if (last_operation == 1)
                     {
@@ -342,8 +300,6 @@ public static class Program
                         AnsiConsole.Write(buffer.ToString());
                         Console.ReadKey();
                     }
-=======
->>>>>>> 80b3520f835cbdc8a96ad4edfee2afdfb4f8acef
                     if (fic.brk == 1)
                     {
                         fic.brk = 0;
@@ -353,10 +309,7 @@ public static class Program
                 jugador += op;
                 if (fic != null)
                 {
-<<<<<<< HEAD
                     fic.strong = 0;
-=======
->>>>>>> 80b3520f835cbdc8a96ad4edfee2afdfb4f8acef
                     fic.t_affect = 1;
                     fic.act_time-=1;
                 }
@@ -367,8 +320,4 @@ public static class Program
        }     
        return 0;        
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 80b3520f835cbdc8a96ad4edfee2afdfb4f8acef

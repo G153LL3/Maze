@@ -149,6 +149,7 @@ public class ficha
     public void Frozen(ref int rcp)
     { // congela un slime
         rcp+=1;
+        
     }
 
     public void Nskills(ref int nxt_not)

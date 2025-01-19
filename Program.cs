@@ -118,7 +118,8 @@ public static class Program
         for (int i = 0; i < 4; i++) //escogen sus fichas
         {
             Console.Clear();
-            Console.WriteLine("Seleccione los slimes que desea ayudar.");
+            AnsiConsole.MarkupLine("[bold italic blue]Seleccione los slimes que desea ayudar[/]");
+
             for (int fhs = 0; fhs < fichas.Length; fhs++) //muestro las 6 fichas
             {
                 if (selected[fhs]) continue;
@@ -241,6 +242,7 @@ public static class Program
                         fic.skill(ref all_no_skill,ref op,ref vel,ref fichas);
                     }
                     buffer.Clear();
+                    
                     Mostrar.MostrarLaberinto(buffer, n,turno, ref fichas, ref laberinto);
 
                     buffer.Append("movimientos restantes: ");
@@ -314,8 +316,10 @@ public static class Program
                     fic.act_time-=1;
                 }
                 fichas[fi_pos] = fic;
-                if (turno == 1) turno = 2;
-                else turno = 1;
+                if (op == 0)
+                    if (turno == 1) turno = 2;
+                    else turno = 1;
+                
             }
        }     
        return 0;        

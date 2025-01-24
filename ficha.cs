@@ -58,6 +58,7 @@ public class ficha
 
     public void init()
     {
+        //le asignamos a cada ficha su posicion inicial, final y actual
         if (this.player == 0)
         {
             this.posX = 0;

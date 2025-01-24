@@ -4,7 +4,7 @@ using Spectre.Console;
 public static class Program
 {
     
-    public static int n = 30; //tamaño del lab
+    public static int n = 20; //tamaño del lab
     static int[,] lab = new int[1000, 1000]; //lab de 1 y 0
     public static int[] pl_cnt = {2,2};
     static bool[,] vis = new bool[1000, 1000]; //verifica si una pos ya fue vis
@@ -61,6 +61,29 @@ public static class Program
 
         muela.menu();        
     }
+    static void MakeTable()
+    {
+        // Crear una tabla
+        var table = new Table();
+
+        // Definir las columnas de la tabla
+        table.AddColumn("ID");
+        table.AddColumn("Nombre");
+        table.AddColumn("Habilidad");
+        table.AddColumn("Veclocidad");
+        table.AddColumn("Tiempo de enfriamiento");
+
+        // Agregar filas a la tabla
+        table.AddRow("1", "FastSlime", "duplica su velocidad", "15", "2");
+        table.AddRow("2", "TrampSlime", "las trampas no le afectan", "14", "3");
+        table.AddRow("3", "StrongSlime", "destruye las paredes del laberinto", "10", "1");
+        table.AddRow("4", "BeginSLime", "regresa un slime del oponente al inicio", "12", "5");
+        table.AddRow("5", "FrozenSlime", "congela los slimes del oponente", "18", "4");
+        table.AddRow("6", "SkillSLime", "impide que el rival use las habilidades de sus slimes", "22", "2");
+
+        // Mostrar la tabla en la consola
+        AnsiConsole.Render(table);
+    }
 
     static void Makelab () // hago el laberinto
     {
@@ -99,19 +122,9 @@ public static class Program
     {
         ConsoleKeyInfo key;
         MainMenu();
-        do {
-            key = Console.ReadKey(); //vemos si desea jugar o salir
-            if (key.Key == ConsoleKey.D1)
-            {
-                break;
-            }
-            if (key.Key == ConsoleKey.D2)
-            {
-                return 0;
-            }
-        } while(key.Key != ConsoleKey.D1 && key.Key != ConsoleKey.D2);
+        bool  follow = Selection.Options(); //vemos si desea jugar o salir
+        if (!follow) return 0;
         
-
         muela.inicio(); //introduccion al juego
         bool []selected = {false, false, false, false, false, false};
         
@@ -119,56 +132,17 @@ public static class Program
         {
             Console.Clear();
             AnsiConsole.MarkupLine("[bold italic blue]Seleccione los slimes que desea ayudar[/]");
-
-            for (int fhs = 0; fhs < fichas.Length; fhs++) //muestro las 6 fichas
-            {
-                if (selected[fhs]) continue;
-                Console.WriteLine(" " +(1+fhs)+ "- " + fichas[fhs].name + ". Velocidad: " + fichas[fhs].speed + ". Habilidad: " + fichas[fhs].skill_desc + ". Tiempo de enfriamiento: " + fichas[fhs].Frozen_time +".  ");
+            Console.WriteLine();
+            MakeTable(); //muestro fichas para que el jugador elija en forma de tabla
+            int num_player = (i%2+1);
+            if (num_player == 1) {
+                AnsiConsole.MarkupLine("[bold italic blue]Jugador 1 seleccione un slime:[/] ");
+            } else {
+                AnsiConsole.MarkupLine("[bold italic blue]Jugador 2 seleccione un slime:[/] ");
             }
-            Console.WriteLine("***************************");
-
-            Console.WriteLine("Jugador "+(i%2+1)+" Seleccione un slime: ");
-            key = Console.ReadKey(); //el jugador selecciona sus slimes
-            if (key.Key == ConsoleKey.D1)
-            {
-                selected[0] = true;
-                fichas[0].player = (i%2);
-                fichas[0].id = 1;
-            }
-            else if(key.Key == ConsoleKey.D2)
-            {
-                selected[1] = true;
-                fichas[1].player = (i%2);
-                fichas[1].id = 2;
-
-            }
-            else if (key.Key == ConsoleKey.D3)
-            {
-                selected[2] = true;
-                fichas[2].player = (i%2);
-                fichas[2].id = 3;
-
-            }
-            else if (key.Key == ConsoleKey.D4)
-            {
-                selected[3] = true;
-                fichas[3].player = (i%2);
-                fichas[3].id = 4;
-
-            }
-            else if (key.Key == ConsoleKey.D5)
-            {
-                selected[4] = true;
-                fichas[4].player = (i%2);
-                fichas[4].id = 5;
-
-            }
-            else if (key.Key == ConsoleKey.D6)
-            {
-                selected[5] = true;
-                fichas[5].player = (i%2);
-                fichas[5].id = 6;
-            }
+            
+            Selection.Decide(ref selected, fichas, i); //ver que fichas decide coger
+            
         }
         for (int i = 0; i < 6; i++)
         { 
@@ -299,6 +273,8 @@ public static class Program
                         Console.Clear();
                         Mostrar.MostrarLaberinto(buffer, n, turno, ref fichas, ref laberinto);
                         buffer.Append("Te haz teletransportado a la salida :) ");
+                        //hacer q solo la ficha desaparezca y si gana que gane
+            
                         AnsiConsole.Write(buffer.ToString());
                         Console.ReadKey();
                     }

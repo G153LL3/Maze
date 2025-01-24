@@ -1,8 +1,8 @@
 using System;
 using Spectre.Console;
-public static class muela
+public static class Introduction
 {
-    public static void menu()
+    public static void Menu()
     {
         Console.Clear();
         Console.WriteLine(" ");
@@ -21,7 +21,7 @@ public static class muela
         AnsiConsole.MarkupLine("[bold italic blue]2-Salir[/]");
 
     }
-    public static void  inicio()
+    public static void Begin()
     {
        Console.Clear();
         var panel = new Panel("[bold italic blue]Beatrix ha vuelto a perder sus slimes, estos escaparon[/]"

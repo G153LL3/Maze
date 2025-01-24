@@ -59,7 +59,7 @@ public static class Program
         fichas[5].Frozen_time = 2;
         fichas[5].skill_desc = skill6_txt;
 
-        muela.menu();        
+        Introduction.Menu();        
     }
     static void MakeTable()
     {
@@ -121,11 +121,11 @@ public static class Program
     public static int Main()
     {
         ConsoleKeyInfo key;
-        MainMenu();
+        MainMenu(); // inicio
         bool  follow = Selection.Options(); //vemos si desea jugar o salir
         if (!follow) return 0;
         
-        muela.inicio(); //introduccion al juego
+        Introduction.Begin(); //introduccion al juego
         bool []selected = {false, false, false, false, false, false};
         
         for (int i = 0; i < 4; i++) //escogen sus fichas
@@ -144,9 +144,9 @@ public static class Program
             Selection.Decide(ref selected, fichas, i); //ver que fichas decide coger
             
         }
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 6; i++) //iteramos por todas las fichas y vemos que ficha es de que jugador
         { 
-            fichas[i].init();
+            fichas[i].init(); //ver funcion
             if (selected[i] == false)
                 fichas[i] = null;
         }

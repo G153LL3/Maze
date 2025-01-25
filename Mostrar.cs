@@ -45,7 +45,9 @@ public static class Mostrar
                 }  
                 
             }
-            buffer.AppendLine();
+          buffer.AppendLine();
+         
+         
         }
         
     }

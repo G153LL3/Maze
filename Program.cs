@@ -225,7 +225,8 @@ public static class Program
                    //AnsiConsole.Write(buffer.ToString());
                     //buffer.Clear();
                     //Console.WriteLine();
-                    AnsiConsole.MarkupLine("[bold italic blue]Escriba SI si desea usar la habilidad de este slime en este turno y NO en caso contario[/]");
+                    AnsiConsole.MarkupLine("[bold italic blue]Escriba[/]" + "[bold italic red] SI [/]" + "[bold italic blue]si desea usar la habilidad de este slime en este turno y [/]" + " [bold italic red]NO[/] " + "[bold italic blue]en caso contario[/]");
+                    
                     ky = Console.ReadLine();
                 }
                 if (all_no_skill == 1) all_no_skill = 0;
@@ -245,9 +246,9 @@ public static class Program
                     Mostrar.MostrarLaberinto(buffer, n,turn, ref fichas, ref laberinto);
 
                     buffer.Append("Movimientos restantes: ");
+                    //AnsiConsole.MarkupLine("[bold italic red]Movimientoa restantes[/]");
                     buffer.Append((res - vel));
                     buffer.AppendLine();
-                    AnsiConsole.MarkupLine("[bold italic blue]Movimientos restantes:[/]");
 
                     if (last_operation != 0) last_operation = 0;
                     Console.Clear();
@@ -258,7 +259,13 @@ public static class Program
                         if (pl_cnt[fic.player] == 0)
                         {
                             Console.WriteLine();
-                            Console.WriteLine("HA GANADO EL JUGADOR " + (Player+1));
+                            if (Player+1 == 1)
+                            {
+                                AnsiConsole.MarkupLine("[bold italic green]HA GANADO EL JUGADOR 1[/]");
+                            } else {
+                                AnsiConsole.MarkupLine("[bold italic green]HA GANADO EL JUGADOR 2[/]");
+                            }
+                            
                             return 0;
                         }
                       
@@ -290,10 +297,9 @@ public static class Program
                         Mostrar.MostrarLaberinto(buffer, n, turn, ref fichas, ref laberinto);
                         Console.WriteLine();
                         buffer.Append("Haz caído en una trampa :( ");
+                        buffer.AppendLine();
                         AnsiConsole.Write(buffer.ToString());
                         Console.ReadKey();
-                        
-    
                     } 
                     else if (last_operation == 2)
                     {
@@ -301,6 +307,7 @@ public static class Program
                         Mostrar.MostrarLaberinto(buffer, n, turn, ref fichas, ref laberinto);
                         Console.WriteLine();
                         buffer.Append("Te haz teletransportado a la salida :)");
+                        buffer.AppendLine();
                         AnsiConsole.Write(buffer.ToString());
                         Console.ReadKey();
                         //Console.Clear();

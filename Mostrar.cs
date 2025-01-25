@@ -47,8 +47,30 @@ public static class Mostrar
             }
             buffer.AppendLine();
         }
-        buffer.Append("Es el turno del jugador ");
-        buffer.Append(turno);
-        buffer.AppendLine();
+        
     }
+    public static void ShowSlimes(int id)
+    {
+        if (id == 1)
+        {
+            AnsiConsole.MarkupLine("[bold italic violet]1 Fast SLime[/]");
+        } else if (id == 2)
+        {
+            AnsiConsole.MarkupLine("[bold italic yellow]2 Trap SLime[/]");
+        } else if (id == 3)
+        {
+            AnsiConsole.MarkupLine("[bold italic green]3 Strong SLime[/]");
+        } else if (id == 4)
+        {
+            AnsiConsole.MarkupLine("[bold italic gray]4 BeginSLime[/]");
+        } else if (id == 5)
+        {
+            AnsiConsole.MarkupLine("[bold italic blue]5 Frozen SLime[/]");
+        } else if (id == 6)
+        {
+            AnsiConsole.MarkupLine("[bold italic red]6 Skill SLime[/]");
+            
+        }
+    }
+    
 }

@@ -16,7 +16,9 @@ class Selection
             else if (key.Key == ConsoleKey.D2)
             {
                 return false;
-            } 
+            } else {
+                AnsiConsole.MarkupLine(" [bold italic blue]: Tecla incorrecta[/]");
+            }
             
         } while(true);
                
@@ -52,7 +54,8 @@ class Selection
                 }
                 if (key.Key == ConsoleKey.D3)
                 {
-                    if (selected[2] == false) 
+                    if (selected[2] == 
+                    false) 
                     {
                         selected[2] = true;
                         fichas[2].player = (i%2);

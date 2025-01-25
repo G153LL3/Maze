@@ -29,32 +29,32 @@ public static class Program
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8; //usar emojis
         
-        fichas[0].name = "FastSlime";
+        fichas[0].name = "Fast Slime";
         fichas[0].speed = 15;
         fichas[0].Frozen_time = 2;
         fichas[0].skill_desc = skill1_txt;
 
-        fichas[1].name = "TrampSlime";
+        fichas[1].name = "Trap Slime";
         fichas[1].speed = 14;
         fichas[1].Frozen_time = 3;
         fichas[1].skill_desc = skill2_txt;
 
-        fichas[2].name = "StrongSlime";
+        fichas[2].name = "Strong Slime";
         fichas[2].speed = 10;
         fichas[2].Frozen_time = 1;
         fichas[2].skill_desc = skill3_txt;
 
-        fichas[3].name = "BeginSlime";
+        fichas[3].name = "Begin Slime";
         fichas[3].speed = 12;
         fichas[3].Frozen_time = 5;
         fichas[3].skill_desc = skill4_txt;
 
-        fichas[4].name = "FrozenSlime";
+        fichas[4].name = "Frozen Slime";
         fichas[4].speed = 18;
         fichas[4].Frozen_time = 4;
         fichas[4].skill_desc = skill5_txt;
 
-        fichas[5].name = "SkillSlime";
+        fichas[5].name = "Skill Slime";
         fichas[5].speed = 22;
         fichas[5].Frozen_time = 2;
         fichas[5].skill_desc = skill6_txt;
@@ -67,6 +67,10 @@ public static class Program
         var table = new Table();
 
         // Definir las columnas de la tabla
+       // Console.BackgroundColor = ConsoleColor.Blue;
+        Console.ForegroundColor = ConsoleColor.Blue;
+
+
         table.AddColumn("ID");
         table.AddColumn("Nombre");
         table.AddColumn("Habilidad");
@@ -74,12 +78,12 @@ public static class Program
         table.AddColumn("Tiempo de enfriamiento");
 
         // Agregar filas a la tabla
-        table.AddRow("1", "FastSlime", "duplica su velocidad", "15", "2");
-        table.AddRow("2", "TrampSlime", "las trampas no le afectan", "14", "3");
-        table.AddRow("3", "StrongSlime", "destruye las paredes del laberinto", "10", "1");
-        table.AddRow("4", "BeginSLime", "regresa un slime del oponente al inicio", "12", "5");
-        table.AddRow("5", "FrozenSlime", "congela los slimes del oponente", "18", "4");
-        table.AddRow("6", "SkillSLime", "impide que el rival use las habilidades de sus slimes", "22", "2");
+        table.AddRow("1", "Fast Slime", "duplica su velocidad", "15", "2");
+        table.AddRow("2", "Tramp Slime", "las trampas no le afectan", "14", "3");
+        table.AddRow("3", "Strong Slime", "destruye las paredes del laberinto", "10", "1");
+        table.AddRow("4", "Begin SLime", "regresa un slime del oponente al inicio", "12", "5");
+        table.AddRow("5", "Frozen Slime", "congela los slimes del oponente", "18", "4");
+        table.AddRow("6", "SkillS Lime", "impide que el rival use las habilidades de sus slimes", "22", "2");
 
         // Mostrar la tabla en la consola
         AnsiConsole.Render(table);
@@ -159,27 +163,46 @@ public static class Program
         Teletransportador.Tele(ref laberinto, n); //teletranportadores 
         StringBuilder buffer = new StringBuilder(); //evitar pantallazos
 
-        int last_operation = 0, turno = 1, jugador = -1;
+        int last_operation = 0, turn = 1, Player = -1;
         int  all_no_skill = 0;
         while (true)
         {
             
             for (int tt = 0;; tt++)
             {        
-                jugador+=1;  
-                jugador%=2;
+                Player+=1;  
+                Player%=2;
                 Console.Clear();    
                 buffer.Clear();
-                Mostrar.MostrarLaberinto(buffer, n, turno, ref fichas, ref laberinto);
-                buffer.AppendLine("Jugador "+(1+jugador)+" tus slimes: ");
+                Mostrar.MostrarLaberinto(buffer, n, turn, ref fichas, ref laberinto);
+                
+                AnsiConsole.Write(buffer.ToString()); //mostramos lab
+                Console.WriteLine();
+                if (turn == 1) 
+                {
+                    AnsiConsole.MarkupLine("[bold italic blue]Es el turno del jugador 1[/]");
+                } else {
+                    AnsiConsole.MarkupLine("[bold italic blue]Es el turno del jugador 2[/]");
+                }
+                
+                AnsiConsole.MarkupLine("[bold italic blue]Seleccione el slime que desea usar[/]");
+                if (1+Player == 1)
+                {
+                   AnsiConsole.MarkupLine("[bold italic blue]Jugador 1 tus slimes:[/]");
+                } else {
+                   AnsiConsole.MarkupLine("[bold italic blue]Jugador 2 tus slimes:[/]");
+                }
+                
 
                 for (int i = 0; i < fichas.Length; i++)
                 {
-                    if (fichas[i] == null || fichas[i].player != jugador) continue;
-                    buffer.AppendLine(fichas[i].name+" "+fichas[i].id);
+                    if (fichas[i] == null || fichas[i].player != Player) continue;
+                    // buffer.AppendLine(fichas[i].name+" "+fichas[i].id);
+                    //Console.WriteLine(fichas[i].id + " " +fichas[i].name);
+                    Mostrar.ShowSlimes(fichas[i].id);
+
+
                 }
-                buffer.AppendLine("Seleccione el slime que desea usar");
-                AnsiConsole.Write(buffer.ToString());
                 buffer.Clear();
                 int ttt = int.Parse(Console.ReadLine());
 
@@ -195,12 +218,14 @@ public static class Program
                     }
                 }
                 
-                string ky = "no";
+                string ky = "NO";
                 if (fic.act_time <= 0 && all_no_skill == 0)
                 {
-                    buffer.AppendLine("Ecriba yes si desea usar la habilidad de este slime en este turno y no en caso contario");
-                    AnsiConsole.Write(buffer.ToString());
-                    buffer.Clear();
+                    //buffer.AppendLine("Ecriba yes si desea usar la habilidad de este slime en este turno y no en caso contario");7
+                   //AnsiConsole.Write(buffer.ToString());
+                    //buffer.Clear();
+                    //Console.WriteLine();
+                    AnsiConsole.MarkupLine("[bold italic blue]Escriba SI si desea usar la habilidad de este slime en este turno y NO en caso contario[/]");
                     ky = Console.ReadLine();
                 }
                 if (all_no_skill == 1) all_no_skill = 0;
@@ -209,7 +234,7 @@ public static class Program
                 for (int vel = 0; vel < res; vel ++)
                 {
                     if (frst)
-                    if (ky == "yes")
+                    if (ky == "SI")
                     {
                         frst = false;
                         fic.act_time = fic.Frozen_time+1;
@@ -217,11 +242,12 @@ public static class Program
                     }
                     buffer.Clear();
                     
-                    Mostrar.MostrarLaberinto(buffer, n,turno, ref fichas, ref laberinto);
+                    Mostrar.MostrarLaberinto(buffer, n,turn, ref fichas, ref laberinto);
 
-                    buffer.Append("movimientos restantes: ");
+                    buffer.Append("Movimientos restantes: ");
                     buffer.Append((res - vel));
                     buffer.AppendLine();
+                    AnsiConsole.MarkupLine("[bold italic blue]Movimientos restantes:[/]");
 
                     if (last_operation != 0) last_operation = 0;
                     Console.Clear();
@@ -232,7 +258,7 @@ public static class Program
                         if (pl_cnt[fic.player] == 0)
                         {
                             Console.WriteLine();
-                            Console.WriteLine("HA GANADO EL JUGADOR " + (jugador+1));
+                            Console.WriteLine("HA GANADO EL JUGADOR " + (Player+1));
                             return 0;
                         }
                       
@@ -261,7 +287,8 @@ public static class Program
                     if (last_operation == 1)
                     {
                         Console.Clear();
-                        Mostrar.MostrarLaberinto(buffer, n, turno, ref fichas, ref laberinto);
+                        Mostrar.MostrarLaberinto(buffer, n, turn, ref fichas, ref laberinto);
+                        Console.WriteLine();
                         buffer.Append("Haz caído en una trampa :( ");
                         AnsiConsole.Write(buffer.ToString());
                         Console.ReadKey();
@@ -271,12 +298,13 @@ public static class Program
                     else if (last_operation == 2)
                     {
                         Console.Clear();
-                        Mostrar.MostrarLaberinto(buffer, n, turno, ref fichas, ref laberinto);
-                        buffer.Append("Te haz teletransportado a la salida :) ");
-                        //hacer q solo la ficha desaparezca y si gana que gane
-            
+                        Mostrar.MostrarLaberinto(buffer, n, turn, ref fichas, ref laberinto);
+                        Console.WriteLine();
+                        buffer.Append("Te haz teletransportado a la salida :)");
                         AnsiConsole.Write(buffer.ToString());
                         Console.ReadKey();
+                        //Console.Clear();
+                        
                     }
                     if (fic.brk == 1)
                     {
@@ -284,7 +312,7 @@ public static class Program
                         break;
                     }
                 }
-                jugador += op;
+                Player += op;
                 if (fic != null)
                 {
                     fic.strong = 0;
@@ -293,8 +321,8 @@ public static class Program
                 }
                 fichas[fi_pos] = fic;
                 if (op == 0)
-                    if (turno == 1) turno = 2;
-                    else turno = 1;
+                    if (turn == 1) turn = 2;
+                    else turn = 1;
                 
             }
        }     

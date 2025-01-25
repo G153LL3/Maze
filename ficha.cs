@@ -111,7 +111,7 @@ public class ficha
                 lstop ^=1;     
             } else if (laberinto[this.posX, this.posY] == 'P') 
             {
-                laberinto[this.posX, posY] = ' ';
+                laberinto[this.posX, this.posY] = ' ';
                 this.posX = this.FinX;
                 this.posY = this.FinY;
                 lstop ^=2;

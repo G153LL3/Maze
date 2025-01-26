@@ -137,12 +137,13 @@ public class ficha
 
     public int Begin(ref ficha[] fichas)
     { // mueve una ficha del rival al inicio
-        Console.WriteLine("Diga que ficha desea mover al inicio");
+        AnsiConsole.MarkupLine("[bold italic blue]Diga que ficha desea mover al inicio[/]");
         for(int i = 0; i < fichas.Length; i++)
         {
             if (fichas[i] == null) continue; 
             if (player == fichas[i].player) continue;
-            Console.WriteLine(fichas[i].name + " " + (i+1));
+            //Console.WriteLine(fichas[i].name + " " + (i+1));
+            Mostrar.ShowSlimes(fichas[i].id);
         }
         return int.Parse(Console.ReadLine())-1;
     }

@@ -221,12 +221,7 @@ public static class Program
                 string ky = "NO";
                 if (fic.act_time <= 0 && all_no_skill == 0)
                 {
-                    //buffer.AppendLine("Ecriba yes si desea usar la habilidad de este slime en este turno y no en caso contario");7
-                   //AnsiConsole.Write(buffer.ToString());
-                    //buffer.Clear();
-                    //Console.WriteLine();
                     AnsiConsole.MarkupLine("[bold italic blue]Escriba[/]" + "[bold italic red] SI [/]" + "[bold italic blue]si desea usar la habilidad de este slime en este turno y [/]" + " [bold italic red]NO[/] " + "[bold italic blue]en caso contario[/]");
-                    
                     ky = Console.ReadLine();
                 }
                 if (all_no_skill == 1) all_no_skill = 0;
@@ -261,9 +256,9 @@ public static class Program
                             Console.WriteLine();
                             if (Player+1 == 1)
                             {
-                                AnsiConsole.MarkupLine("[bold italic green]HA GANADO EL JUGADOR 1[/]");
+                                AnsiConsole.MarkupLine("[bold italic blue]HA GANADO EL JUGADOR 1[/]");
                             } else {
-                                AnsiConsole.MarkupLine("[bold italic green]HA GANADO EL JUGADOR 2[/]");
+                                AnsiConsole.MarkupLine("[bold italic bluen]HA GANADO EL JUGADOR 2[/]");
                             }
                             
                             return 0;
@@ -296,9 +291,8 @@ public static class Program
                         Console.Clear();
                         Mostrar.MostrarLaberinto(buffer, n, turn, ref fichas, ref laberinto);
                         Console.WriteLine();
-                        buffer.Append("Haz caído en una trampa :( ");
-                        buffer.AppendLine();
                         AnsiConsole.Write(buffer.ToString());
+                        AnsiConsole.MarkupLine("[bold italic blue]Has caído en una trampa :([/]");
                         Console.ReadKey();
                     } 
                     else if (last_operation == 2)
@@ -306,12 +300,9 @@ public static class Program
                         Console.Clear();
                         Mostrar.MostrarLaberinto(buffer, n, turn, ref fichas, ref laberinto);
                         Console.WriteLine();
-                        buffer.Append("Te haz teletransportado a la salida :)");
-                        buffer.AppendLine();
                         AnsiConsole.Write(buffer.ToString());
+                        AnsiConsole.MarkupLine("[bold italic blue]Te has teletransportado a la salida :)[/]");
                         Console.ReadKey();
-                        //Console.Clear();
-                        
                     }
                     if (fic.brk == 1)
                     {

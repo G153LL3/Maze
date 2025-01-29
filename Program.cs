@@ -8,13 +8,12 @@ public static class Program
     ///ponerle musica 
     ///ponerle color a las paredes
     ///ponerle color en las fichas
-    ///arreglar en la tabla que me salga el color del nombre
     ///ponerle excepcion para cuando elige ficha
     ///mjorar la entrada
     ///arreglar los warnin
-    ///agregar condicion para cuando se quiera teletransportar y la salida este llena y para cuando caiga en trampa
+
         
-    public static int n = 20; //tamaño del lab
+    public static int n = 30; //tamaño del lab
     static int[,] lab = new int[1000, 1000]; //lab de 1 y 0
     public static int[] pl_cnt = {2,2};
     static bool[,] vis = new bool[1000, 1000]; //verifica si una pos ya fue vis
@@ -73,30 +72,23 @@ public static class Program
     }
     static void MakeTable()
     {
-        // Crear una tabla
         var table = new Table();
 
-        // Definir las columnas de la tabla
-       // Console.BackgroundColor = ConsoleColor.Blue;
-        Console.ForegroundColor = ConsoleColor.Blue;
+        table.AddColumn("[blue]ID[/]");
+        table.AddColumn("[blue]Nombre[/]");
+        table.AddColumn("[blue]Habilidad[/]");
+        table.AddColumn("[blue]Veclocidad[/]");
+        table.AddColumn("[blue]Tiempo de enfriamiento[/]");
+        table.AddRow("[cyan]1[/]", "[cyan]Fast Slime[/]", "[cyan]duplica su velocidad[/]", "[cyan]15[/]", "[cyan]2[/]");
+        table.AddRow("[yellow]2[/]", "[yellow]Tramp Slime[/]", "[yellow]las trampas no le afectan[/]", "[yellow]14[/]", "[yellow]3[/]");
+        table.AddRow("[green]3[/]", "[green]Strong Slime[/]", "[green]destruye las paredes del laberinto[/]", "[green]10[/]", "[green]1[/]");
+        table.AddRow("[hotpink]4[/]", "[hotpink]Begin SLime[/]", "[hotpink]regresa un slime del oponente al inicio[/]", "[hotpink]12[/]", "[hotpink]5[/]");
+        table.AddRow("[blue]5[/]", "[blue]Frozen Slime[/]", "[blue]congela los slimes del oponente[/]", "[blue]18[/]", "[blue]4[/]");
+        table.AddRow("[red]6[/]", "[red]SkillS Lime[/]", "[red]impide que el rival use las habilidades de sus slimes[/]", "[red]22[/]", "[red]2[/]");
 
+        table.BorderColor(Color.Blue);
+        AnsiConsole.Write(table);
 
-        table.AddColumn("ID");
-        table.AddColumn("Nombre");
-        table.AddColumn("Habilidad");
-        table.AddColumn("Veclocidad");
-        table.AddColumn("Tiempo de enfriamiento");
-
-        // Agregar filas a la tabla
-        table.AddRow("1", "Fast Slime", "duplica su velocidad", "15", "2");
-        table.AddRow("2", "Tramp Slime", "las trampas no le afectan", "14", "3");
-        table.AddRow("3", "Strong Slime", "destruye las paredes del laberinto", "10", "1");
-        table.AddRow("4", "Begin SLime", "regresa un slime del oponente al inicio", "12", "5");
-        table.AddRow("5", "Frozen Slime", "congela los slimes del oponente", "18", "4");
-        table.AddRow("6", "SkillS Lime", "impide que el rival use las habilidades de sus slimes", "22", "2");
-
-        // Mostrar la tabla en la consola
-        AnsiConsole.Render(table);
     }
 
     static void Makelab () // hago el laberinto
@@ -125,7 +117,8 @@ public static class Program
                         laberinto[i, j] = " ";
                     } 
                     else {
-                        laberinto[i, j] = "█";
+                        string pared = "█";
+                        laberinto[i, j] = pared;
                     }
                 }
             }   

@@ -47,7 +47,7 @@ public static class Introduction
            + "\n" + "[bold italic blue]para ello tenga en cuenta que Beatrix ha estado haciendo[/]"
            + "\n" + "[bold italic blue]experimentos con los slimes y cada uno ha desarrollado una[/]"
            + "\n" + "[bold italic blue]habilidad única que le podría facilitar el recorrido,[/]"
-           + "\n" + "[bold italic blue]también podría encontrarse con teletransportadores que lo[/]"
+           + "\n" + "[bold italic blue]también podría encontrarse con puertas slime que lo[/]"
            + "\n" + "[bold italic blue]lleven a la salida y tenga cuidado con las trampas, la lejana[/]"
            + "\n" + "[bold italic blue]pradera es un lugar peligroso.[/]")
         {

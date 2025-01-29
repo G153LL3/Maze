@@ -27,7 +27,8 @@ public static class Mostrar
                     {
                         buffer.Append(fichas[k].ico);
                         //string palabra = fichas[k].ico;
-                        // buffer = new Markup($"[blue]{palabra}[/]");
+                        //var x = new Markup($"[blue]{palabra}[/]");
+                        //buffer.Append(x);
                         
 
                         
@@ -64,7 +65,8 @@ public static class Mostrar
                        // buffer.Append(" ");
                     }
                     } else {
-                        if (i == 0 && j ==2){
+                        if (i == 0 && j ==2) 
+                        {
                             buffer.Append(" ");
                         }
                         parche = 0;
@@ -90,7 +92,7 @@ public static class Mostrar
             AnsiConsole.MarkupLine("[bold italic green]3 Strong SLime[/]");
         } else if (id == 4)
         {
-            AnsiConsole.MarkupLine("[bold italic gray]4 BeginSLime[/]");
+            AnsiConsole.MarkupLine("[bold italic hotpink]4 BeginSLime[/]");
         } else if (id == 5)
         {
             AnsiConsole.MarkupLine("[bold italic blue]5 Frozen SLime[/]");

@@ -5,6 +5,7 @@ public static class Mostrar
 {  
    public static void MostrarLaberinto(StringBuilder buffer, int n, int turno,ref ficha[] fichas, ref string[,] laberinto)
     {
+        int parche= 0; // esto es para cuando se teletransporta o cae en trampa y el finalo inicio esta lleno
         for (int i = 0; i <= n; i++)
         {
             for (int j = 0; j <= n; j++)
@@ -18,6 +19,7 @@ public static class Mostrar
                         cnt++;
                     }
                 }
+                
                 for (int k = 0; k < fichas.Length; k++)
                 {
                     if (fichas[k] == null) continue;
@@ -27,17 +29,30 @@ public static class Mostrar
                         //string palabra = fichas[k].ico;
                         // buffer = new Markup($"[blue]{palabra}[/]");
                         
-                        if(cnt < 2)
+
+                        
+                        if(cnt < 2) //si no hay 2 fichas juntas ponme un espacio en su lugar
                         {
                             buffer.Append(" ");
                            // buffer.Append(" ");
                             //buffer.Append(" ");
                             //buffer.Append(" ");
                         }
+                        
                     }
                 }
+                if (cnt == 3)
+                {
+                    parche = 1;
+                }
+                
+                
                 if (cnt == 0) // verifica si en I,J hay una ficha
                 {
+                    if (parche != 1) 
+                    {
+                        
+                    
                     buffer.Append(laberinto[i, j]);
 
                     if (laberinto[i,j] == "█" || laberinto[i,j] == " ")
@@ -47,6 +62,12 @@ public static class Mostrar
                     }
                     else {
                        // buffer.Append(" ");
+                    }
+                    } else {
+                        if (i == 0 && j ==2){
+                            buffer.Append(" ");
+                        }
+                        parche = 0;
                     }
                 }  
                 

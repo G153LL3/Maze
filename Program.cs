@@ -301,7 +301,9 @@ public static class Program
                         Mostrar.MostrarLaberinto(buffer, n, turn, ref fichas, ref laberinto);
                         Console.WriteLine();
                         AnsiConsole.Write(buffer.ToString());
+                        Console.WriteLine();
                         AnsiConsole.MarkupLine("[bold italic magenta]Has caído en una trampa :([/]");
+                        AnsiConsole.MarkupLine("[bold italic blue]Presione cualquier tecla para continuar[/]");
                         Console.ReadKey();
                     } 
                     else if (last_operation == 2)
@@ -310,7 +312,9 @@ public static class Program
                         Mostrar.MostrarLaberinto(buffer, n, turn, ref fichas, ref laberinto);
                         Console.WriteLine();
                         AnsiConsole.Write(buffer.ToString());
+                        Console.WriteLine();
                         AnsiConsole.MarkupLine("[bold italic magenta]Te has teletransportado a la salida :)[/]");
+                        AnsiConsole.MarkupLine("[bold italic blue]Presione cualquier tecla para continuar[/]");
                         Console.ReadKey();
                     }
                     if (fic.brk == 1)

@@ -1,18 +1,28 @@
 ﻿using System;
 using System.Text;
 using Spectre.Console;
+
 public static class Program
 {
-    
+
+    ///ponerle musica 
+    ///ponerle color a las paredes
+    ///ponerle color en las fichas
+    ///arreglar en la tabla que me salga el color del nombre
+    ///ponerle excepcion para cuando elige ficha
+    ///mjorar la entrada
+    ///arreglar los warnin
+    ///agregar condicion para cuando se quiera teletransportar y la salida este llena y para cuando caiga en trampa
+        
     public static int n = 20; //tamaño del lab
     static int[,] lab = new int[1000, 1000]; //lab de 1 y 0
     public static int[] pl_cnt = {2,2};
     static bool[,] vis = new bool[1000, 1000]; //verifica si una pos ya fue vis
     
-    static char[,] laberinto = new char [1000, 1000]; //laberinto
+    static string[,] laberinto = new string [1000, 1000]; //laberinto
     static ficha[] fichas = {
-        new ficha("☺"),new ficha("☻"),new ficha("☻"),
-        new ficha("☺"),new ficha("☺"),new ficha("☺")
+        new ficha("☻"),new ficha("☻"),new ficha("☻"),
+        new ficha("☻"),new ficha("☻"),new ficha("☻")
     }; // 6 fichas
 
     ///habilidades
@@ -106,22 +116,21 @@ public static class Program
             {
                 if (i == 0 && j == 1 || i == n && j == n-1) 
                 {
-                    laberinto[i,j] = ' ';
+                    laberinto[i,j] = " ";
                 } 
                 else 
                 {
                     if (lab[i, j] == 0) 
-                    {
-                        laberinto[i, j] = ' ';
+                    { 
+                        laberinto[i, j] = " ";
                     } 
                     else {
-                        laberinto[i, j] = '█'; 
+                        laberinto[i, j] = "█";
                     }
                 }
             }   
         }
     }
-    
     public static int Main()
     {
         ConsoleKeyInfo key;
@@ -135,14 +144,14 @@ public static class Program
         for (int i = 0; i < 4; i++) //escogen sus fichas
         {
             Console.Clear();
-            AnsiConsole.MarkupLine("[bold italic blue]Seleccione los slimes que desea ayudar[/]");
+            AnsiConsole.MarkupLine("[bold italic magenta]Seleccione los slimes que desea ayudar[/]");
             Console.WriteLine();
             MakeTable(); //muestro fichas para que el jugador elija en forma de tabla
             int num_player = (i%2+1);
             if (num_player == 1) {
-                AnsiConsole.MarkupLine("[bold italic blue]Jugador 1 seleccione un slime:[/] ");
+                AnsiConsole.MarkupLine("[bold italic magenta]Jugador 1 seleccione un slime:[/] ");
             } else {
-                AnsiConsole.MarkupLine("[bold italic blue]Jugador 2 seleccione un slime:[/] ");
+                AnsiConsole.MarkupLine("[bold italic magenta]Jugador 2 seleccione un slime:[/] ");
             }
             
             Selection.Decide(ref selected, fichas, i); //ver que fichas decide coger
@@ -180,17 +189,17 @@ public static class Program
                 Console.WriteLine();
                 if (turn == 1) 
                 {
-                    AnsiConsole.MarkupLine("[bold italic blue]Es el turno del jugador 1[/]");
+                    AnsiConsole.MarkupLine("[bold italic magenta]Es el turno del jugador 1[/]");
                 } else {
-                    AnsiConsole.MarkupLine("[bold italic blue]Es el turno del jugador 2[/]");
+                    AnsiConsole.MarkupLine("[bold italic magenta]Es el turno del jugador 2[/]");
                 }
                 
-                AnsiConsole.MarkupLine("[bold italic blue]Seleccione el slime que desea usar[/]");
+                AnsiConsole.MarkupLine("[bold italic magenta]Seleccione el slime que desea usar[/]");
                 if (1+Player == 1)
                 {
-                   AnsiConsole.MarkupLine("[bold italic blue]Jugador 1 tus slimes:[/]");
+                   AnsiConsole.MarkupLine("[bold italic magenta]Jugador 1 tus slimes:[/]");
                 } else {
-                   AnsiConsole.MarkupLine("[bold italic blue]Jugador 2 tus slimes:[/]");
+                   AnsiConsole.MarkupLine("[bold italic magenta]Jugador 2 tus slimes:[/]");
                 }
                 
 
@@ -221,7 +230,7 @@ public static class Program
                 string ky = "NO";
                 if (fic.act_time <= 0 && all_no_skill == 0)
                 {
-                    AnsiConsole.MarkupLine("[bold italic blue]Escriba[/]" + "[bold italic red] SI [/]" + "[bold italic blue]si desea usar la habilidad de este slime en este turno y [/]" + " [bold italic red]NO[/] " + "[bold italic blue]en caso contario[/]");
+                    AnsiConsole.MarkupLine("[bold italic blue]Escriba[/]" + "[bold italic magenta] SI [/]" + "[bold italic blue]si desea usar la habilidad de este slime en este turno y [/]" + " [bold italic magenta]NO[/] " + "[bold italic blue]en caso contario[/]");
                     ky = Console.ReadLine();
                 }
                 if (all_no_skill == 1) all_no_skill = 0;
@@ -241,7 +250,7 @@ public static class Program
                     Mostrar.MostrarLaberinto(buffer, n,turn, ref fichas, ref laberinto);
 
                     buffer.Append("Movimientos restantes: ");
-                    //AnsiConsole.MarkupLine("[bold italic red]Movimientoa restantes[/]");
+                   // AnsiConsole.MarkupLine("[bold italic red]Movimientos restantes[/]");
                     buffer.Append((res - vel));
                     buffer.AppendLine();
 
@@ -256,9 +265,9 @@ public static class Program
                             Console.WriteLine();
                             if (Player+1 == 1)
                             {
-                                AnsiConsole.MarkupLine("[bold italic blue]HA GANADO EL JUGADOR 1[/]");
+                                AnsiConsole.MarkupLine("[bold italic magenta]HA GANADO EL JUGADOR 1[/]");
                             } else {
-                                AnsiConsole.MarkupLine("[bold italic bluen]HA GANADO EL JUGADOR 2[/]");
+                                AnsiConsole.MarkupLine("[bold italic magenta]HA GANADO EL JUGADOR 2[/]");
                             }
                             
                             return 0;
@@ -292,7 +301,7 @@ public static class Program
                         Mostrar.MostrarLaberinto(buffer, n, turn, ref fichas, ref laberinto);
                         Console.WriteLine();
                         AnsiConsole.Write(buffer.ToString());
-                        AnsiConsole.MarkupLine("[bold italic blue]Has caído en una trampa :([/]");
+                        AnsiConsole.MarkupLine("[bold italic magenta]Has caído en una trampa :([/]");
                         Console.ReadKey();
                     } 
                     else if (last_operation == 2)
@@ -301,7 +310,7 @@ public static class Program
                         Mostrar.MostrarLaberinto(buffer, n, turn, ref fichas, ref laberinto);
                         Console.WriteLine();
                         AnsiConsole.Write(buffer.ToString());
-                        AnsiConsole.MarkupLine("[bold italic blue]Te has teletransportado a la salida :)[/]");
+                        AnsiConsole.MarkupLine("[bold italic magenta]Te has teletransportado a la salida :)[/]");
                         Console.ReadKey();
                     }
                     if (fic.brk == 1)
@@ -323,7 +332,8 @@ public static class Program
                     else turn = 1;
                 
             }
-       }     
+       }  
+//       */   
        return 0;        
     }
 }

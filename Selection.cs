@@ -17,7 +17,7 @@ class Selection
             {
                 return false;
             } else {
-                AnsiConsole.MarkupLine(" [bold italic blue]: Tecla incorrecta[/]");
+                AnsiConsole.MarkupLine(" [bold italic red]: Tecla incorrecta[/]");
             }
             
         } while(true);

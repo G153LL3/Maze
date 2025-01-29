@@ -3,6 +3,7 @@ using Spectre.Console;
 
 public class ficha
 {
+    
     public int 
     initX, // posicion x inicial
     initY, // posicion y inicial
@@ -79,39 +80,39 @@ public class ficha
         }
     }
     //lstop como llevar 3 bool es last operation
-    public void MoverFicha (int deltaX, int deltaY, int n, ref char[,] laberinto, ref int lstop)
+    public void MoverFicha (int deltaX, int deltaY, int n, ref string[,] laberinto, ref int lstop)
     {
         int nuevaposX = this.posX + deltaX;
         int nuevaposY = this.posY + deltaY;
-        if (nuevaposX >= 0 && nuevaposX < n+1 && nuevaposY >= 0 && nuevaposY < n+1 && (laberinto[nuevaposX, nuevaposY] != '█' || this.strong == 1))
+        if (nuevaposX >= 0 && nuevaposX < n+1 && nuevaposY >= 0 && nuevaposY < n+1 && (laberinto[nuevaposX, nuevaposY] != "█" || this.strong == 1))
         {
             lstop ^= 4; 
             this.posX = nuevaposX;
             this.posY = nuevaposY;
-            if (laberinto[this.posX, this.posY] == '█')laberinto[this.posX, this.posY] = ' ';
-            if (laberinto[this.posX, this.posY] == 'H' && t_affect > 0)
+            if (laberinto[this.posX, this.posY] == "█")laberinto[this.posX, this.posY] = " ";
+            if (laberinto[this.posX, this.posY] == "🐢" && t_affect > 0)
             {
                 lstop ^=1;     
-                laberinto[this.posX, this.posY] = ' ';
-                this.speed /= 2; //error pq se muestra mal
+                laberinto[this.posX, this.posY] = " ";
+                this.speed /= 2; 
             }
-            if (laberinto[this.posX, this.posY] == 'O' && t_affect > 0)
+            if (laberinto[this.posX, this.posY] == "💣" && t_affect > 0)
             {
                 lstop ^=1;     
-                laberinto[this.posX, this.posY] = ' ';
+                laberinto[this.posX, this.posY] = " ";
                 this.brk = 1;
             }
             
-            if (laberinto[this.posX, this.posY] == 'T' && t_affect > 0)
+            if (laberinto[this.posX, this.posY] == "🔙" && t_affect > 0)
             {
                // Console.WriteLine("Caiste en un trampa");
-                laberinto[this.posX, this.posY] = ' ';
+                laberinto[this.posX, this.posY] = " ";
                 this.posX = this.initX;
                 this.posY = this.initY;
                 lstop ^=1;     
-            } else if (laberinto[this.posX, this.posY] == 'P') 
+            } else if (laberinto[this.posX, this.posY] == "🚪") 
             {
-                laberinto[this.posX, this.posY] = ' ';
+                laberinto[this.posX, this.posY] = " ";
                 this.posX = this.FinX;
                 this.posY = this.FinY;
                 lstop ^=2;

@@ -12,13 +12,13 @@ public static class Introduction
         AnsiConsole.Render(bigText);
 
         
-        AnsiConsole.MarkupLine("[bold blue]Presiona cualquier tecla para continuar[/]");
+        AnsiConsole.MarkupLine("[bold magenta]Presiona cualquier tecla para continuar[/]");
         Console.ReadKey();
         Console.Clear();
         //arreglar est parte ponerlo grande y bonito
         AnsiConsole.MarkupLine("[bold italic blue]OPCIONES:[/]");
-        AnsiConsole.MarkupLine("[bold italic blue]1-Jugar[/]");
-        AnsiConsole.MarkupLine("[bold italic blue]2-Salir[/]");
+        AnsiConsole.MarkupLine("[bold italic magenta]1-Jugar[/]");
+        AnsiConsole.MarkupLine("[bold italic magenta]2-Salir[/]");
 
     }
     public static void Begin()
@@ -38,7 +38,7 @@ public static class Introduction
         AnsiConsole.Write(panel); 
 
         Console.WriteLine(" ");
-        AnsiConsole.MarkupLine("[bold italic blue]Presione cualquier tecla para continuar[/]");
+        AnsiConsole.MarkupLine("[bold italic magenta]Presione cualquier tecla para continuar[/]");
         Console.ReadKey();
         Console.Clear();
         ///*
@@ -58,7 +58,7 @@ public static class Introduction
          AnsiConsole.Write(panel2); 
 
         Console.WriteLine(" ");
-        AnsiConsole.MarkupLine("[bold blue]Presione cualquier tecla para continuar[/]");
+        AnsiConsole.MarkupLine("[bold magenta]Presione cualquier tecla para continuar[/]");
         Console.ReadKey();
         
         ///por turnos se escogen los slimes

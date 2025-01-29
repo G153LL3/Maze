@@ -3,7 +3,7 @@ using System.Text;
 using Spectre.Console;
 public static class Mostrar
 {  
-   public static void MostrarLaberinto(StringBuilder buffer, int n, int turno,ref ficha[] fichas, ref char[,] laberinto)
+   public static void MostrarLaberinto(StringBuilder buffer, int n, int turno,ref ficha[] fichas, ref string[,] laberinto)
     {
         for (int i = 0; i <= n; i++)
         {
@@ -24,29 +24,34 @@ public static class Mostrar
                     if (i == fichas[k].posX && j == fichas[k].posY) // verifica si en I,J hay una ficha
                     {
                         buffer.Append(fichas[k].ico);
+                        //string palabra = fichas[k].ico;
+                        // buffer = new Markup($"[blue]{palabra}[/]");
                         
                         if(cnt < 2)
                         {
-                            buffer.Append(' ');
-                         
+                            buffer.Append(" ");
+                           // buffer.Append(" ");
+                            //buffer.Append(" ");
+                            //buffer.Append(" ");
                         }
                     }
                 }
                 if (cnt == 0) // verifica si en I,J hay una ficha
                 {
                     buffer.Append(laberinto[i, j]);
-                    if (laberinto[i,j] == '█' || laberinto[i,j] == ' ')
+
+                    if (laberinto[i,j] == "█" || laberinto[i,j] == " ")
                     {
                         buffer.Append(laberinto[i, j]);
+                       
                     }
                     else {
-                        buffer.Append(' ');
+                       // buffer.Append(" ");
                     }
                 }  
                 
             }
-          buffer.AppendLine();
-         
+            buffer.AppendLine();
          
         }
         
@@ -55,7 +60,7 @@ public static class Mostrar
     {
         if (id == 1)
         {
-            AnsiConsole.MarkupLine("[bold italic violet]1 Fast SLime[/]");
+            AnsiConsole.MarkupLine("[bold italic cyan]1 Fast SLime[/]");
         } else if (id == 2)
         {
             AnsiConsole.MarkupLine("[bold italic yellow]2 Trap SLime[/]");

@@ -1,7 +1,7 @@
 using System;
 public class Trampas{
 
-    public static void Trampa1 (ref char[,] laberinto, int n) 
+    public static void Trampa1 (ref string[,] laberinto, int n) 
     {
        Random rand = new Random();
        int cont = 0;
@@ -14,14 +14,14 @@ public class Trampas{
          {
            no_en_inicio = 1;
          }
-         if (laberinto[x, y] != '█' && laberinto[x, y] != 'T' && no_en_inicio != 1)
+         if (laberinto[x, y] !="█" && laberinto[x, y] != "🔙" && no_en_inicio != 1)
          {
             cont+=1;
-            laberinto[x, y] =  'T';
+            laberinto[x, y] =  "🔙";
          }
        }
     }
-    public static void Trampa2 (ref char[,] laberinto, int n) 
+    public static void Trampa2 (ref string[,] laberinto, int n) 
     {
        Random rand = new Random();
        int cont = 0;
@@ -34,14 +34,14 @@ public class Trampas{
          {
            no_en_inicio = 1;
          }
-         if (laberinto[x, y] != '█' && laberinto[x, y] != 'T' && laberinto[x, y] != 'H' && no_en_inicio != 1)
+         if (laberinto[x, y] != "█" && laberinto[x, y] != "🔙" && laberinto[x, y] != "🐢" && no_en_inicio != 1)
          {
                cont+=1;
-               laberinto[x, y] = 'H';
+               laberinto[x, y] ="🐢";
          }
        }
     }
-    public static void Trampa3 (ref char[,] laberinto, int n) 
+    public static void Trampa3 (ref string[,] laberinto, int n) 
     {
        Random rand = new Random();
        int cont = 0;
@@ -55,10 +55,10 @@ public class Trampas{
            no_en_inicio = 1;
          }
 
-         if (laberinto[x, y] != '█' && laberinto[x, y] != 'T' && laberinto[x, y] != 'H' && laberinto[x, y] != 'O' && no_en_inicio != 1)
+         if (laberinto[x, y] != "█" && laberinto[x, y] != "🔙" && laberinto[x, y] != "🐢" && laberinto[x, y] != "💣" && no_en_inicio != 1)
          {
             cont+=1;
-            laberinto[x, y] =  'O';
+            laberinto[x, y] =  "💣";
          }
        }
     }

@@ -6,9 +6,6 @@ using Spectre.Console;
 
 public static class Program
 {
-
-  
-    ///ponerle color en las fichas
     ///ponerlo todo en ingles
     //hacer informe
 
@@ -192,9 +189,8 @@ public static class Program
                 buffer.Clear();
                 Mostrar.MostrarLaberinto(buffer, n, turn, ref fichas, ref laberinto);
                 
-                //AnsiConsole.Write(buffer.ToString()); //mostramos lab
-                string xx = buffer.ToString();
-                AnsiConsole.Markup($"[blue]{xx}[/]");
+                AnsiConsole.Markup(buffer.ToString()); //mostramos
+                
                 Console.WriteLine();
                 if (turn == 1) 
                 {
@@ -270,8 +266,7 @@ public static class Program
                     if (last_operation != 0) last_operation = 0;
                     Console.Clear();
                     //AnsiConsole.Write(buffer.ToString());
-                    xx = buffer.ToString();
-                    AnsiConsole.Markup($"[blue]{xx}[/]");
+                   AnsiConsole.Markup(buffer.ToString());
                     if (fic.posX == fic.FinX && fic.posY == fic.FinY) 
                     {
                         pl_cnt[fic.player]--;
@@ -315,9 +310,8 @@ public static class Program
                         Console.Clear();
                         Mostrar.MostrarLaberinto(buffer, n, turn, ref fichas, ref laberinto);
                         Console.WriteLine();
-                        xx = buffer.ToString();
-                        AnsiConsole.Markup($"[blue]{xx}[/]");
-                        //AnsiConsole.Write(buffer.ToString());
+                        AnsiConsole.Markup(buffer.ToString());
+                        
                         Console.WriteLine();
                         AnsiConsole.MarkupLine("[bold italic magenta]Has caído en una trampa :([/]");
                         AnsiConsole.MarkupLine("[bold italic blue]Presione cualquier tecla para continuar[/]");
@@ -328,9 +322,8 @@ public static class Program
                         Console.Clear();
                         Mostrar.MostrarLaberinto(buffer, n, turn, ref fichas, ref laberinto);
                         Console.WriteLine();
-                        //AnsiConsole.Write(buffer.ToString());
-                        xx = buffer.ToString();
-                        AnsiConsole.Markup($"[blue]{xx}[/]");
+                       AnsiConsole.Markup(buffer.ToString());
+                        
                         Console.WriteLine();
                         AnsiConsole.MarkupLine("[bold italic magenta]Te has teletransportado a la salida :)[/]");
                         AnsiConsole.MarkupLine("[bold italic blue]Saque su Slime fuera del laberinto[/]");

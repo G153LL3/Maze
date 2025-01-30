@@ -26,8 +26,28 @@ public static class Mostrar
                     if (fichas[k] == null) continue;
                     if (i == fichas[k].posX && j == fichas[k].posY) // verifica si en I,J hay una ficha
                     {
+                        if (fichas[k].id == 1) 
+                        {
+                            buffer.Append($"[cyan]{fichas[k].ico}[/]");
+                        } else if (fichas[k].id == 2)
+                        {
+                            buffer.Append($"[yellow]{fichas[k].ico}[/]");
+                        } else if (fichas[k].id == 3)
+                        {
+                            buffer.Append($"[green]{fichas[k].ico}[/]");
+
+                        } else if (fichas[k].id == 4)
+                        {
+                            buffer.Append($"[hotpink]{fichas[k].ico}[/]");
+
+                        } else if (fichas[k].id == 5)
+                        {
+                            buffer.Append($"[blue]{fichas[k].ico}[/]");
+
+                        } else {
+                            buffer.Append($"[red]{fichas[k].ico}[/]");
+                        }
                         
-                        buffer.Append(fichas[k].ico);
 
                         //string palabra = fichas[k].ico;
                         //var x = new Markup($"[blue]{palabra}[/]");
@@ -57,11 +77,12 @@ public static class Mostrar
                     {
                         
                     
-                    buffer.Append(laberinto[i, j]);
+                    buffer.Append($"[blue]{laberinto[i, j]}[/]");
 
                     if (laberinto[i,j] == "█" || laberinto[i,j] == " ")
                     {
-                        buffer.Append(laberinto[i, j]);
+                       buffer.Append($"[blue]{laberinto[i, j]}[/]");
+                        
                        
                     }
                     else {

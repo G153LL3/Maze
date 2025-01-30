@@ -2,8 +2,9 @@ using System;
 using System.Text;
 using Spectre.Console;
 
-public class ficha
+public class piece
 {
+    
    
     
     public int 
@@ -26,7 +27,7 @@ public class ficha
     name,
     skill_desc = "None";
 
-    public ficha (string icon,string name = "ficha")
+    public piece (string icon,string name = "piece")
     {
         this.t_affect = 1;
         this.ico = icon;
@@ -34,9 +35,7 @@ public class ficha
        
     }
     
-  
-  
-    public void skill (ref int nxt_not,ref int turn,ref int vel,ref ficha[] fichas)
+    public void skill (ref int nxt_not, ref int turn, ref int vel, ref piece[] pieces)
     {
         if (this.id == 1)
         {
@@ -49,10 +48,10 @@ public class ficha
             this.strong = 1;
         } else if(this.id == 4)
         {
-            int x = Begin(ref fichas);    
+            int x = Begin(ref pieces);    
             Console.Write(x);
-            fichas[x].posX = fichas[x].initX;
-            fichas[x].posY = fichas[x].initY;
+            pieces[x].posX = pieces[x].initX;
+            pieces[x].posY = pieces[x].initY;
         } else if(this.id == 5)
         {
             Frozen(ref turn);
@@ -85,39 +84,39 @@ public class ficha
         }
     }
     //lstop como llevar 3 bool es last operation
-    public void MoverFicha (int deltaX, int deltaY, int n, ref string[,] laberinto, ref int lstop)
+    public void Move (int deltaX, int deltaY, int n, ref string[,] maze, ref int lstop)
     {
         int nuevaposX = this.posX + deltaX;
         int nuevaposY = this.posY + deltaY;
-        if (nuevaposX >= 0 && nuevaposX < n+1 && nuevaposY >= 0 && nuevaposY < n+1 && (laberinto[nuevaposX, nuevaposY] != "█" || this.strong == 1))
+        if (nuevaposX >= 0 && nuevaposX < n+1 && nuevaposY >= 0 && nuevaposY < n+1 && (maze[nuevaposX, nuevaposY] != "█" || this.strong == 1))
         {
             lstop ^= 4; 
             this.posX = nuevaposX;
             this.posY = nuevaposY;
-            if (laberinto[this.posX, this.posY] == "█")laberinto[this.posX, this.posY] = " ";
-            if (laberinto[this.posX, this.posY] == "🐢" && t_affect > 0)
+            if (maze[this.posX, this.posY] == "█")maze[this.posX, this.posY] = " ";
+            if (maze[this.posX, this.posY] == "🐢" && t_affect > 0)
             {
                 lstop ^=1;     
-                laberinto[this.posX, this.posY] = " ";
+                maze[this.posX, this.posY] = " ";
                 this.speed /= 2; 
             }
-            if (laberinto[this.posX, this.posY] == "💣" && t_affect > 0)
+            if (maze[this.posX, this.posY] == "💣" && t_affect > 0)
             {
                 lstop ^=1;     
-                laberinto[this.posX, this.posY] = " ";
+                maze[this.posX, this.posY] = " ";
                 this.brk = 1;
             }
             
-            if (laberinto[this.posX, this.posY] == "🔙" && t_affect > 0)
+            if (maze[this.posX, this.posY] == "🔙" && t_affect > 0)
             {
                // Console.WriteLine("Caiste en un trampa");
-                laberinto[this.posX, this.posY] = " ";
+                maze[this.posX, this.posY] = " ";
                 this.posX = this.initX;
                 this.posY = this.initY;
                 lstop ^=1;     
-            } else if (laberinto[this.posX, this.posY] == "🚪") 
+            } else if (maze[this.posX, this.posY] == "🚪") 
             {
-                laberinto[this.posX, this.posY] = " ";
+                maze[this.posX, this.posY] = " ";
                 this.posX = this.FinX;
                 this.posY = this.FinY;
                 lstop ^=2;
@@ -141,15 +140,15 @@ public class ficha
     }// recordar marcar al final del turno
     
 
-    public int Begin(ref ficha[] fichas)
+    public int Begin(ref piece[] pieces)
     { // mueve una ficha del rival al inicio
         AnsiConsole.MarkupLine("[bold italic blue]Diga que ficha desea mover al inicio[/]");
-        for(int i = 0; i < fichas.Length; i++)
+        for(int i = 0; i < pieces.Length; i++)
         {
-            if (fichas[i] == null) continue; 
-            if (player == fichas[i].player) continue;
-            //Console.WriteLine(fichas[i].name + " " + (i+1));
-            Mostrar.ShowSlimes(fichas[i].id);
+            if (pieces[i] == null) continue; 
+            if (player == pieces[i].player) continue;
+            //Console.WriteLine(pieces[i].name + " " + (i+1));
+            Show.Slimes(pieces[i].id);
         }
         return int.Parse(Console.ReadLine())-1;
     }

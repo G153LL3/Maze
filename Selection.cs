@@ -24,7 +24,7 @@ class Selection
         } while(true);
                
     }
-    public static void Decide(ref bool[] selected, ficha[] fichas, int i) /// pasar fichas x ref?
+    public static void Decide(ref bool[] selected, piece[] pieces, int i) /// pasar fichas x ref?
     {
         ConsoleKeyInfo key;
         do {
@@ -34,10 +34,11 @@ class Selection
                     if (selected[0] == false) 
                     {
                         selected[0] = true;
-                        fichas[0].player = (i%2);
-                        fichas[0].id = 1;
+                        pieces[0].player = (i%2);
+                        pieces[0].id = 1;
                         break;
-                    } else {
+                    } 
+                    else {
                         AnsiConsole.MarkupLine(" [bold italic red]Este Slime ya fue seleccionado[/]");
                     }
                 }
@@ -46,23 +47,24 @@ class Selection
                     if (selected[1] == false) 
                     {
                         selected[1] = true;
-                        fichas[1].player = (i%2);
-                        fichas[1].id = 2;
+                        pieces[1].player = (i%2);
+                        pieces[1].id = 2;
                         break;
-                    } else {
+                    } 
+                    else {
                        AnsiConsole.MarkupLine(" [bold italic red]Este Slime ya fue seleccionado[/]");
                     }
                 }
                 if (key.Key == ConsoleKey.D3)
                 {
-                    if (selected[2] == 
-                    false) 
+                    if (selected[2] == false) 
                     {
                         selected[2] = true;
-                        fichas[2].player = (i%2);
-                        fichas[2].id = 3;
+                        pieces[2].player = (i%2);
+                        pieces[2].id = 3;
                         break;
-                    } else {
+                    } 
+                    else {
                         
                         AnsiConsole.MarkupLine(" [bold italic red]Este Slime ya fue seleccionado[/]");
                     }
@@ -72,10 +74,11 @@ class Selection
                     if (selected[3] == false) 
                     {
                         selected[3] = true;
-                        fichas[3].player = (i%2);
-                        fichas[3].id = 4;
+                        pieces[3].player = (i%2);
+                        pieces[3].id = 4;
                         break;
-                    } else {
+                    } 
+                    else {
                         AnsiConsole.MarkupLine(" [bold italic red]Este Slime ya fue seleccionado[/]");
                     }
                 }
@@ -84,10 +87,11 @@ class Selection
                     if (selected[4] == false) 
                     {
                         selected[4] = true;
-                        fichas[4].player = (i%2);
-                        fichas[4].id = 5;
+                        pieces[4].player = (i%2);
+                        pieces[4].id = 5;
                         break;
-                    } else {
+                    } 
+                    else {
                         AnsiConsole.MarkupLine(" [bold italic red]Este Slime ya fue seleccionado[/]");
                     }
                 }
@@ -96,11 +100,12 @@ class Selection
                     if (selected[5] == false)
                     {
                         selected[5] = true;
-                        fichas[5].player = (i%2);
-                        fichas[5].id = 6;
+                        pieces[5].player = (i%2);
+                        pieces[5].id = 6;
 
                         break;
-                    } else {
+                    } 
+                    else {
                         AnsiConsole.MarkupLine(" [bold italic red]Este Slime ya fue seleccionado[/]");
                     }
                 }
@@ -108,7 +113,9 @@ class Selection
 
                 } while(true);               
     }
-    public static int Choose(bool[] visited) {
+    public static int Choose (bool[] visited) 
+    {
+        ///excepcion para cuando elige la ficha a mover
         do 
         {
             string number = Console.ReadLine();
@@ -144,6 +151,4 @@ class Selection
          
         }    while(true);
     }
-
-
 }

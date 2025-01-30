@@ -2,7 +2,7 @@ using System;
 
 public static class Lab {
     
-    public static bool outt(int i, int j, int n) //verifica que no se salga de rango
+    public static bool outt (int i, int j, int n) //verifica que no se salga de rango
     {
         if (i <= 0 || j <= 0) return true;
         if (j >= n || i >= n) return true;

@@ -24,8 +24,10 @@ public static class Show
                 for (int k = 0; k < pieces.Length; k++)
                 {
                     if (pieces[k] == null) continue;
+                    
                     if (i == pieces[k].posX && j == pieces[k].posY) // verifica si en i,j hay una ficha
                     {
+                        
                         ///agrego pieces al buffer segun su color
                         if (pieces[k].id == 1) 
                         {
@@ -46,7 +48,7 @@ public static class Show
                             buffer.Append($"[blue]{pieces[k].ico}[/]");
 
                         } else {
-                            buffer.Append($"[red]{pieces[k].ico}[/]");
+                           buffer.Append($"[red]{pieces[k].ico}[/]");
                         }
                         
                         if (cnt < 2) //si hay pieces ponme un espacio en el buffer
@@ -66,11 +68,12 @@ public static class Show
                 {
                     if (pos_full != 1) 
                     {
-                        buffer.Append($"[blue]{maze[i, j]}[/]");
+                        buffer.Append(maze[i, j]);
 
-                        if (maze[i,j] == "█" || maze[i,j] == " ")
+                        if (maze[i,j] == "[blue]█[/]" || maze[i,j] == " ")
                         {
-                            buffer.Append($"[blue]{maze[i, j]}[/]");      
+                            buffer.Append($"[red]{maze[i, j]}[/]");      
+                            buffer.Append(maze[i, j]);      
                         }
                     } else {
                         if (i == 0 && j == 2) 

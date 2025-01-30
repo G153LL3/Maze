@@ -116,7 +116,9 @@ public static class Program
                         maze[i, j] = " ";
                     } 
                     else {
-                        maze[i, j] = "█";
+
+                       // maze[i, j] = "[blue]█[/]";
+                        maze[i, j] = "[blue]█[/]";
                     }
                 }
             }   
@@ -235,7 +237,7 @@ public static class Program
                 }
                 
                 string useskills = "NO";
-                if (pce.act_time <= 0 && all_no_skill == 0)
+                if (pce.c_time <= 0 && all_no_skill == 0)
                 {
                     AnsiConsole.MarkupLine("[bold italic blue]Escriba[/]" + "[bold italic magenta] SI [/]" + "[bold italic blue]si desea usar la habilidad de este slime en este turno y [/]" + " [bold italic magenta]NO[/] " + "[bold italic blue]en caso contario[/]");
                     useskills = Console.ReadLine();
@@ -249,7 +251,7 @@ public static class Program
                     if (useskills == "SI")
                     {
                         frst = false;
-                        pce.act_time = pce.Frozen_time+1;
+                        pce.c_time = pce.Frozen_time+1;
                         pce.skill(ref all_no_skill,ref op,ref vel,ref pieces);
                     }
                     buffer.Clear();
@@ -258,13 +260,14 @@ public static class Program
 
                     string mov = "Movimientos restantes: ";
                     buffer.Append($"[magenta]{mov}[/]");
+                    //buffer.Append("Movimientos restantes: ");
                     buffer.Append((res - vel));
                     buffer.AppendLine();
 
                     if (last_operation != 0) last_operation = 0;
                     Console.Clear();
                     AnsiConsole.Markup(buffer.ToString());
-                    if (pce.posX == pce.FinX && pce.posY == pce.FinY) 
+                    if (pce.posX == pce.endX && pce.posY == pce.endY) 
                     {
                         pl_cnt[pce.player]--;
                         if (pl_cnt[pce.player] == 0)
@@ -337,7 +340,7 @@ public static class Program
                 {
                     pce.strong = 0;
                     pce.t_affect = 1;
-                    pce.act_time-=1;
+                    pce.c_time-=1;
                 }
                 pieces[pos_pi] = pce;
                 if (op == 0)

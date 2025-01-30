@@ -9,6 +9,7 @@ public static class Program
     ///ponerle color a las paredes
     ///ponerle color en las fichas
     ///ponerle excepcion para cuando elige ficha
+
     ///mjorar la entrada
     ///arreglar los warnin
 
@@ -24,13 +25,16 @@ public static class Program
         new ficha("☻"),new ficha("☻"),new ficha("☻")
     }; // 6 fichas
 
+
     ///habilidades
+    
     const string skill1_txt = "duplica su velocidad";
     const string skill2_txt = "las trampas no le afectan";
     const string skill3_txt = "destruye las paredes del laberinto";
     const string skill4_txt = "regresa un slime del oponente al inicio";
     const string skill5_txt = "congela los slimes del oponente";
     const string skill6_txt = "impide que el rival use las habilidades de sus slimes";
+    
 
     static int cant_fichas = 2; //cada jugador tiene 2 fichas
 
@@ -178,7 +182,9 @@ public static class Program
                 buffer.Clear();
                 Mostrar.MostrarLaberinto(buffer, n, turn, ref fichas, ref laberinto);
                 
-                AnsiConsole.Write(buffer.ToString()); //mostramos lab
+                //AnsiConsole.Write(buffer.ToString()); //mostramos lab
+                string xx = buffer.ToString();
+                AnsiConsole.Markup($"[blue]{xx}[/]");
                 Console.WriteLine();
                 if (turn == 1) 
                 {
@@ -330,7 +336,7 @@ public static class Program
                 
             }
        }  
-//       */   
+
        return 0;        
     }
 }

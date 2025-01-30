@@ -1,8 +1,10 @@
 using System;
+using System.Text;
 using Spectre.Console;
 
 public class ficha
 {
+   
     
     public int 
     initX, // posicion x inicial
@@ -24,13 +26,16 @@ public class ficha
     name,
     skill_desc = "None";
 
-    public ficha (string icon, string name = "ficha")
+    public ficha (string icon,string name = "ficha")
     {
         this.t_affect = 1;
         this.ico = icon;
         this.name = name;
-    } 
-
+       
+    }
+    
+  
+  
     public void skill (ref int nxt_not,ref int turn,ref int vel,ref ficha[] fichas)
     {
         if (this.id == 1)

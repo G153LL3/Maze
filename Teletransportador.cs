@@ -5,7 +5,7 @@ public static class Teletransportador
     {
         Random rand = new Random();
         int cont = 0;
-        while (cont < 4)
+        while (cont < 5)
         {
             int x = rand.Next(n);
             int y = rand.Next(n);

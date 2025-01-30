@@ -25,7 +25,9 @@ public static class Mostrar
                     if (fichas[k] == null) continue;
                     if (i == fichas[k].posX && j == fichas[k].posY) // verifica si en I,J hay una ficha
                     {
+                        
                         buffer.Append(fichas[k].ico);
+
                         //string palabra = fichas[k].ico;
                         //var x = new Markup($"[blue]{palabra}[/]");
                         //buffer.Append(x);

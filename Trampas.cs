@@ -5,7 +5,7 @@ public class Trampas{
     {
        Random rand = new Random();
        int cont = 0;
-       while (cont < 2) 
+       while (cont < 5) 
        {
          int x = rand.Next(n);
          int y = rand.Next(n);
@@ -25,7 +25,7 @@ public class Trampas{
     {
        Random rand = new Random();
        int cont = 0;
-       while (cont < 2) 
+       while (cont < 5) 
        {
          int x = rand.Next(n);
          int y = rand.Next(n);
@@ -45,7 +45,7 @@ public class Trampas{
     {
        Random rand = new Random();
        int cont = 0;
-       while (cont < 2) 
+       while (cont < 5) 
        {
          int x = rand.Next(n);
          int y = rand.Next(n);

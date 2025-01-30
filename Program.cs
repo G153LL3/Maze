@@ -7,13 +7,10 @@ using Spectre.Console;
 public static class Program
 {
 
-    ///ponerle musica 
-    ///ponerle color a las paredes
-    ///ponerle color en las fichasÑ
-    ///ponerle excepcion para cuando elige ficha
-
-    ///mjorar la entrada
-    ///arreglar los warnin
+  
+    ///ponerle color en las fichas
+    ///ponerlo todo en ingles
+    //hacer informe
 
         
     public static int n = 30; //tamaño del lab
@@ -134,6 +131,7 @@ public static class Program
     {
         ///musica
         ///*
+       
         using (var audioFile= new AudioFileReader("F:/programas/Slime.mp3"))
         using (var outputDevice = new WaveOutEvent())
         {
@@ -213,25 +211,29 @@ public static class Program
                    AnsiConsole.MarkupLine("[bold italic magenta]Jugador 2 tus slimes:[/]");
                 }
                 
-
+                bool[] visited = new bool[7];
                 for (int i = 0; i < fichas.Length; i++)
                 {
                     if (fichas[i] == null || fichas[i].player != Player) continue;
                     // buffer.AppendLine(fichas[i].name+" "+fichas[i].id);
                     //Console.WriteLine(fichas[i].id + " " +fichas[i].name);
-                    Mostrar.ShowSlimes(fichas[i].id);
 
+                    Mostrar.ShowSlimes(fichas[i].id);
+                    visited[i+1] = true;
 
                 }
                 buffer.Clear();
-                int ttt = int.Parse(Console.ReadLine());
+                
+                //int ttt = int.Parse(Console.ReadLine());
+                int ttt = Selection.Choose(visited);
+                
 
                 ficha fic = null;
                 int fi_pos = 0;
                 for (int i = 0; i < fichas.Length; i++)
                 {
                     if (fichas[i] == null) continue;
-                    if (fichas[i].id == ttt)
+                    if (fichas[i].id == ttt) ///si es la ficha que elegi
                     {
                         fic = fichas[i];
                         fi_pos = i;
@@ -331,7 +333,7 @@ public static class Program
                         AnsiConsole.Markup($"[blue]{xx}[/]");
                         Console.WriteLine();
                         AnsiConsole.MarkupLine("[bold italic magenta]Te has teletransportado a la salida :)[/]");
-                        AnsiConsole.MarkupLine("[bold italic blue]Presione cualquier tecla para continuar[/]");
+                        AnsiConsole.MarkupLine("[bold italic blue]Saque su Slime fuera del laberinto[/]");
                         Console.ReadKey();
                     }
                     if (fic.brk == 1)
@@ -356,6 +358,7 @@ public static class Program
        }  
 Console.ReadKey();
         }
+       
        return 0;        
     }
 }

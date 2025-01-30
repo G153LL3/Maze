@@ -106,10 +106,44 @@ class Selection
                 }
 
 
-                } while(true);
-        
-
-               
+                } while(true);               
     }
+    public static int Choose(bool[] visited) {
+        do 
+        {
+            string number = Console.ReadLine();
+            if (number == "1") 
+            {
+                if (visited[1]) return 1;
+                AnsiConsole.MarkupLine("[bold italic red]Tecla incorrecta[/]");
+                
+            } else if (number == "2")
+            {
+                if (visited[2]) return 2;
+                AnsiConsole.MarkupLine("[bold italic red]Tecla incorrecta[/]");
+            } else if (number == "3")
+            {
+                if (visited[3]) return 3;
+                AnsiConsole.MarkupLine("[bold italic red]Tecla incorrecta[/]");
+            } else if (number == "4")
+            {
+                if (visited[4]) return 4;
+                AnsiConsole.MarkupLine("[bold italic red]Tecla incorrecta[/]");
+            } else if (number == "5")
+            {
+                if (visited[5]) return 5;
+                AnsiConsole.MarkupLine("[bold italic red]Tecla incorrecta[/]");
+            } else if (number == "6")
+            {
+                if (visited[6]) return 6;
+                AnsiConsole.MarkupLine("[bold italic red]Tecla incorrecta[/]");
+    
+            } else {
+                AnsiConsole.MarkupLine("[bold italic red]Tecla incorrecta[/]");
+            }
+         
+        }    while(true);
+    }
+
 
 }

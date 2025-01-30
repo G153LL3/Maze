@@ -11,7 +11,8 @@ public static class Lab {
     
     public static void dfs (int n, int i, int j, ref bool[,] vis, ref  int[,] lab ,int p1 = -10000, int p2 = -10000)
     {
-        if (outt(i, j, n)) return; //verifico q esa pos no esta visitada
+        if (outt(i, j, n)) return;
+
         vis[i, j] = true;
         int[] x = {0, 0, 2,-2};
         int[] y = {2,-2, 0, 0};

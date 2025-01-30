@@ -255,7 +255,9 @@ public static class Program
 
                     if (last_operation != 0) last_operation = 0;
                     Console.Clear();
-                    AnsiConsole.Write(buffer.ToString());
+                    //AnsiConsole.Write(buffer.ToString());
+                    xx = buffer.ToString();
+                    AnsiConsole.Markup($"[blue]{xx}[/]");
                     if (fic.posX == fic.FinX && fic.posY == fic.FinY) 
                     {
                         pl_cnt[fic.player]--;
@@ -299,7 +301,9 @@ public static class Program
                         Console.Clear();
                         Mostrar.MostrarLaberinto(buffer, n, turn, ref fichas, ref laberinto);
                         Console.WriteLine();
-                        AnsiConsole.Write(buffer.ToString());
+                        xx = buffer.ToString();
+                        AnsiConsole.Markup($"[blue]{xx}[/]");
+                        //AnsiConsole.Write(buffer.ToString());
                         Console.WriteLine();
                         AnsiConsole.MarkupLine("[bold italic magenta]Has caído en una trampa :([/]");
                         AnsiConsole.MarkupLine("[bold italic blue]Presione cualquier tecla para continuar[/]");
@@ -310,7 +314,9 @@ public static class Program
                         Console.Clear();
                         Mostrar.MostrarLaberinto(buffer, n, turn, ref fichas, ref laberinto);
                         Console.WriteLine();
-                        AnsiConsole.Write(buffer.ToString());
+                        //AnsiConsole.Write(buffer.ToString());
+                        xx = buffer.ToString();
+                        AnsiConsole.Markup($"[blue]{xx}[/]");
                         Console.WriteLine();
                         AnsiConsole.MarkupLine("[bold italic magenta]Te has teletransportado a la salida :)[/]");
                         AnsiConsole.MarkupLine("[bold italic blue]Presione cualquier tecla para continuar[/]");

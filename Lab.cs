@@ -1,4 +1,5 @@
 using System;
+
 public static class Lab {
     
     public static bool outt(int i, int j, int n) //verifica que no se salga de rango

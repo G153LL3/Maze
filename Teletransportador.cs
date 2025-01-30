@@ -1,4 +1,5 @@
 using System;
+
 public static class Teletransportador
 {
    public static void Tele(ref string[,] laberinto, int n)

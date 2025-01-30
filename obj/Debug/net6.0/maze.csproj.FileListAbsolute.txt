@@ -40,3 +40,9 @@ F:\programas\Maze\obj\Debug\net6.0\maze.dll
 F:\programas\Maze\obj\Debug\net6.0\ref\maze.dll
 F:\programas\Maze\obj\Debug\net6.0\maze.pdb
 F:\programas\Maze\obj\Debug\net6.0\maze.genruntimeconfig.cache
+F:\programas\Maze\bin\Debug\net6.0\NAudio.dll
+F:\programas\Maze\bin\Debug\net6.0\NAudio.Asio.dll
+F:\programas\Maze\bin\Debug\net6.0\NAudio.Core.dll
+F:\programas\Maze\bin\Debug\net6.0\NAudio.Midi.dll
+F:\programas\Maze\bin\Debug\net6.0\NAudio.Wasapi.dll
+F:\programas\Maze\bin\Debug\net6.0\NAudio.WinMM.dll

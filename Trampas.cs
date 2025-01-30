@@ -1,4 +1,5 @@
 using System;
+
 public class Trampas{
 
     public static void Trampa1 (ref string[,] laberinto, int n) 

@@ -1,13 +1,15 @@
 ﻿using System;
+using NAudio.Wave; 
 using System.Text;
 using Spectre.Console;
+
 
 public static class Program
 {
 
     ///ponerle musica 
     ///ponerle color a las paredes
-    ///ponerle color en las fichas
+    ///ponerle color en las fichasÑ
     ///ponerle excepcion para cuando elige ficha
 
     ///mjorar la entrada
@@ -128,8 +130,18 @@ public static class Program
             }   
         }
     }
-    public static int Main()
+    public static int Main(string[] args)
     {
+        ///musica
+        ///*
+        using (var audioFile= new AudioFileReader("F:/programas/Slime.mp3"))
+        using (var outputDevice = new WaveOutEvent())
+        {
+            outputDevice.Init(audioFile);
+            outputDevice.Play();
+           
+        
+
         ConsoleKeyInfo key;
         MainMenu(); // inicio
         bool  follow = Selection.Options(); //vemos si desea jugar o salir
@@ -342,7 +354,8 @@ public static class Program
                 
             }
        }  
-
+Console.ReadKey();
+        }
        return 0;        
     }
 }

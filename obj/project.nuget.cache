@@ -1,11 +1,21 @@
 {
   "version": 2,
-  "dgSpecHash": "OcUvQsz49d/2ObCP+mwFWPWVBTPHUVJPKTWS3E7AslWd5/u6RkPqh9dHApyEBwGp9ubOfFwAAEnfT5kQShqMZg==",
+  "dgSpecHash": "2UYIXF2rhtKQEXyxsJz+In8z7Wps3r0fptXOqL6LahOgiACiZlM7GH6kQggV4e6uUOGQpd7UB+7TZvQMGDsgpg==",
   "success": true,
   "projectFilePath": "F:\\programas\\Maze\\maze.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\naudio\\2.2.1\\naudio.2.2.1.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\naudio.asio\\2.2.1\\naudio.asio.2.2.1.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\naudio.core\\2.2.1\\naudio.core.2.2.1.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\naudio.midi\\2.2.1\\naudio.midi.2.2.1.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\naudio.wasapi\\2.2.1\\naudio.wasapi.2.2.1.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\naudio.winmm\\2.2.1\\naudio.winmm.2.2.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\spectre.console\\0.49.1\\spectre.console.0.49.1.nupkg.sha512",
-    "C:\\Users\\User\\.nuget\\packages\\spectre.console.cli\\0.49.1\\spectre.console.cli.0.49.1.nupkg.sha512"
+    "C:\\Users\\User\\.nuget\\packages\\spectre.console.cli\\0.49.1\\spectre.console.cli.0.49.1.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512"
   ],
   "logs": []
 }

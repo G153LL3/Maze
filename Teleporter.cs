@@ -6,7 +6,7 @@ public static class Teleporter
     {
         Random rand = new Random();
         int count = 0;
-        while (count < 4)
+        while (count < 3)
         {
             int x = rand.Next(n);
             int y = rand.Next(n);

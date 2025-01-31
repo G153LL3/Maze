@@ -12,8 +12,8 @@ public static class Program
         
     public static int n = 30; //tamaño del lab
     static int[,] lab = new int[1000, 1000]; //lab de 1 y 0
-    static bool[,] vis = new bool[1000, 1000]; //veripcea si una pos ya fue vis
-     public static int[] pl_cnt = {2,2}; ///
+    static bool[,] vis = new bool[1000, 1000]; //veriPiecea si una pos ya fue vis
+     public static int[] pl_cnt = {2,2}; /// player contador 
     
     static string[,] maze = new string [1000, 1000]; //maze
     static piece[] pieces = {
@@ -157,7 +157,7 @@ public static class Program
             Selection.Decide(ref selected, pieces, i); //ver que pieces decide coger
             
         }
-        for (int i = 0; i < 6; i++) //iteramos por todas las pieces y vemos que pceha es de que jugador
+        for (int i = 0; i < 6; i++) //iteramos por todas las pieces y vemos que Pieceha es de que jugador
         { 
             pieces[i].init(); //ver funcion
             if (selected[i] == false)
@@ -209,67 +209,58 @@ public static class Program
                 for (int i = 0; i < pieces.Length; i++)
                 {
                     if (pieces[i] == null || pieces[i].player != Player) continue;
-                    // buffer.AppendLine(pieces[i].name+" "+pieces[i].id);
-                    //Console.WriteLine(pieces[i].id + " " +pieces[i].name);
-
                     Show.Slimes(pieces[i].id);
                     visited[i+1] = true;
 
                 }
                 buffer.Clear();
-                
-                //int piece_id = int.Parse(Console.ReadLine());
                 int piece_id = Selection.Choose(visited);
-                
-
-                piece pce = null;
-                int pos_pi = 0;
+                piece Piece = null;
+                int pos_Piece = 0;
                 for (int i = 0; i < pieces.Length; i++)
                 {
                     if (pieces[i] == null) continue;
-                    if (pieces[i].id == piece_id) ///si es la pceha que elegi
+                    if (pieces[i].id == piece_id) ///si es la ficha que elegi
                     {
-                        pce = pieces[i];
-                        pos_pi = i;
+                        Piece = pieces[i];
+                        pos_Piece = i;
                     }
                 }
                 
                 string useskills = "NO";
-                if (pce.c_time <= 0 && all_no_skill == 0)
+                if (Piece.c_time <= 0 && all_no_skill == 0)
                 {
                     AnsiConsole.MarkupLine("[bold italic blue]Escriba[/]" + "[bold italic magenta] SI [/]" + "[bold italic blue]si desea usar la habilidad de este slime en este turno y [/]" + " [bold italic magenta]NO[/] " + "[bold italic blue]en caso contario[/]");
                     useskills = Console.ReadLine();
                 }
                 if (all_no_skill == 1) all_no_skill = 0;
                 bool frst = true;
-                int op = 0, res = pce.speed;
+                int op = 0, res = Piece.speed;
                 for (int vel = 0; vel < res; vel ++)
                 {
                     if (frst)
                     if (useskills == "SI")
                     {
                         frst = false;
-                        pce.c_time = pce.Frozen_time+1;
-                        pce.skill(ref all_no_skill,ref op,ref vel,ref pieces);
+                        Piece.c_time = Piece.Frozen_time+1;
+                        Piece.skill(ref all_no_skill,ref op,ref vel,ref pieces);
                     }
                     buffer.Clear();
                     
                     Show.Maze (buffer, n,turn, ref pieces, ref maze);
 
                     string mov = "Movimientos restantes: ";
-                   // buffer.Append($"[magenta]{mov}[/]");
-
-                    buffer.Append("Movimientos restantes: ");
+                    buffer.Append($"[magenta]{mov}[/]");
                     buffer.Append((res - vel));
                     buffer.AppendLine();
 
                     if (last_operation != 0) last_operation = 0;
                     Console.Clear();
                     AnsiConsole.Markup(buffer.ToString());
-                    if (pce.posX == pce.endX && pce.posY == pce.endY) 
+                    if (Piece.posX == Piece.endX && Piece.posY == Piece.endY) 
                     {
-                        pl_cnt[pce.player]--;
-                        if (pl_cnt[pce.player] == 0)
+                        pl_cnt[Piece.player]--;
+                        if (pl_cnt[Piece.player] == 0)
                         {
                             Console.WriteLine();
                             if (Player+1 == 1)
@@ -282,19 +273,19 @@ public static class Program
                             return 0;
                         }
                       
-                        pce = null;
+                        Piece = null;
                         break;
                     }       
                      
                     ConsoleKeyInfo KEY = Console.ReadKey(true);
                     if (KEY.Key == ConsoleKey.UpArrow)
-                        pce.Move(-1, 0, n, ref maze, ref last_operation);
+                        Piece.Move(-1, 0, n, ref maze, ref last_operation);
                     else if (KEY.Key == ConsoleKey.DownArrow)
-                        pce.Move(1, 0, n, ref maze, ref last_operation);
+                        Piece.Move(1, 0, n, ref maze, ref last_operation);
                     else if (KEY.Key == ConsoleKey.LeftArrow)
-                        pce.Move(0, -1, n, ref maze, ref last_operation );
+                        Piece.Move(0, -1, n, ref maze, ref last_operation );
                     else if (KEY.Key == ConsoleKey.RightArrow)
-                        pce.Move(0, 1, n, ref maze, ref last_operation);
+                        Piece.Move(0, 1, n, ref maze, ref last_operation);
                     if(last_operation < 4)
                     {
                         vel--;
@@ -328,20 +319,20 @@ public static class Program
                         AnsiConsole.MarkupLine("[bold italic blue]Saque su Slime fuera del maze[/]");
                         Console.ReadKey();
                     }
-                    if (pce.brk == 1)
+                    if (Piece.brk == 1)
                     {
-                        pce.brk = 0;
+                        Piece.brk = 0;
                         break;
                     }
                 }
                 Player += op;
-                if (pce != null)
+                if (Piece != null)
                 {
-                    pce.strong = 0;
-                    pce.t_affect = 1;
-                    pce.c_time-=1;
+                    Piece.strong = 0;
+                    Piece.t_affect = 1;
+                    Piece.c_time-=1;
                 }
-                pieces[pos_pi] = pce;
+                pieces[pos_Piece] = Piece;
                 if (op == 0)
                     if (turn == 1) turn = 2;
                     else turn = 1;

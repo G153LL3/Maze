@@ -25,7 +25,7 @@ public static class Program
     ///habilidades
     const string skill1_txt = "duplica su velocidad";
     const string skill2_txt = "las trampas no le afectan";
-    const string skill3_txt = "destruye las paredes del maze";
+    const string skill3_txt = "destruye las paredes del laberinto";
     const string skill4_txt = "regresa un slime del oponente al inicio";
     const string skill5_txt = "congela los slimes del oponente";
     const string skill6_txt = "impide que el rival use las habilidades de sus slimes";
@@ -79,11 +79,11 @@ public static class Program
         table.AddColumn("[blue]Veclocidad[/]");
         table.AddColumn("[blue]Tiempo de enfriamiento[/]");
         table.AddRow("[cyan]1[/]", "[cyan]Fast Slime[/]", "[cyan]duplica su velocidad[/]", "[cyan]15[/]", "[cyan]2[/]");
-        table.AddRow("[yellow]2[/]", "[yellow]Tramp Slime[/]", "[yellow]las trampas no le afectan[/]", "[yellow]14[/]", "[yellow]3[/]");
-        table.AddRow("[green]3[/]", "[green]Strong Slime[/]", "[green]destruye las paredes del maze[/]", "[green]10[/]", "[green]1[/]");
+        table.AddRow("[yellow]2[/]", "[yellow]Trap Slime[/]", "[yellow]las trampas no le afectan[/]", "[yellow]14[/]", "[yellow]3[/]");
+        table.AddRow("[green]3[/]", "[green]Strong Slime[/]", "[green]destruye las paredes del laberinto[/]", "[green]10[/]", "[green]1[/]");
         table.AddRow("[hotpink]4[/]", "[hotpink]Begin SLime[/]", "[hotpink]regresa un slime del oponente al inicio[/]", "[hotpink]12[/]", "[hotpink]5[/]");
         table.AddRow("[blue]5[/]", "[blue]Frozen Slime[/]", "[blue]congela los slimes del oponente[/]", "[blue]18[/]", "[blue]4[/]");
-        table.AddRow("[red]6[/]", "[red]SkillS Lime[/]", "[red]impide que el rival use las habilidades de sus slimes[/]", "[red]22[/]", "[red]2[/]");
+        table.AddRow("[red]6[/]", "[red]Skill SLime[/]", "[red]impide que el rival use las habilidades de sus slimes[/]", "[red]22[/]", "[red]2[/]");
 
         table.BorderColor(Color.Blue);
         AnsiConsole.Write(table);

@@ -15,7 +15,7 @@ public static class Teleporter
             {
                 notbegin = 1;
             }
-            if (maze[x, y] != "[blue]█[/]" && maze[x, y] != "🔙" && maze[x, y] != "💣" && maze[x, y] != "🐢" && maze[x, y]!= "🚪"  && notbegin != 1)
+            if (maze[x, y] != "█" && maze[x, y] != "🔙" && maze[x, y] != "💣" && maze[x, y] != "🐢" && maze[x, y]!= "🚪"  && notbegin != 1)
             {
                 count+=1;
                 maze[x, y] = "🚪";

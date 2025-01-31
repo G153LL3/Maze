@@ -13,7 +13,7 @@ public static class Program
     public static int n = 30; //tamaño del lab
     static int[,] lab = new int[1000, 1000]; //lab de 1 y 0
     static bool[,] vis = new bool[1000, 1000]; //veripcea si una pos ya fue vis
-     public static int[] pl_cnt = {2,2}; /// ni idea
+     public static int[] pl_cnt = {2,2}; ///
     
     static string[,] maze = new string [1000, 1000]; //maze
     static piece[] pieces = {
@@ -116,9 +116,7 @@ public static class Program
                         maze[i, j] = " ";
                     } 
                     else {
-
-                       // maze[i, j] = "[blue]█[/]";
-                        maze[i, j] = "[blue]█[/]";
+                        maze[i, j] = "█";
                     }
                 }
             }   
@@ -259,8 +257,9 @@ public static class Program
                     Show.Maze (buffer, n,turn, ref pieces, ref maze);
 
                     string mov = "Movimientos restantes: ";
-                    buffer.Append($"[magenta]{mov}[/]");
-                    //buffer.Append("Movimientos restantes: ");
+                   // buffer.Append($"[magenta]{mov}[/]");
+
+                    buffer.Append("Movimientos restantes: ");
                     buffer.Append((res - vel));
                     buffer.AppendLine();
 

@@ -83,12 +83,12 @@ public class piece
     {
         int newposX = this.posX + deltaX;
         int newposY = this.posY + deltaY;
-        if (newposX >= 0 && newposX < n+1 && newposY >= 0 && newposY < n+1 && (maze[newposX, newposY] != "[blue]█[/]" || this.strong == 1))
+        if (newposX >= 0 && newposX < n+1 && newposY >= 0 && newposY < n+1 && (maze[newposX, newposY] != "█" || this.strong == 1))
         {
             lstop ^= 4; 
             this.posX = newposX;
             this.posY = newposY;
-            if (maze[this.posX, this.posY] == "[blue]█[/]") maze[this.posX, this.posY] = " ";
+            if (maze[this.posX, this.posY] == "█") maze[this.posX, this.posY] = " ";
             if (maze[this.posX, this.posY] == "🐢" && t_affect > 0)
             {
                 lstop ^=1;     

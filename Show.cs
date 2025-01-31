@@ -70,9 +70,8 @@ public static class Show
                     {
                         buffer.Append(maze[i, j]);
 
-                        if (maze[i,j] == "[blue]█[/]" || maze[i,j] == " ")
+                        if (maze[i,j] == "█" || maze[i,j] == " ")
                         {
-                            buffer.Append($"[red]{maze[i, j]}[/]");      
                             buffer.Append(maze[i, j]);      
                         }
                     } else {

@@ -5,11 +5,7 @@ using Spectre.Console;
 
 
 public static class Program
-{
-    ///ponerlo todo en ingles
-    //hacer informe
-
-        
+{    
     public static int n = 30; //tamaño del lab
     static int[,] lab = new int[1000, 1000]; //lab de 1 y 0
     static bool[,] vis = new bool[1000, 1000]; //veriPiecea si una pos ya fue vis
@@ -316,7 +312,7 @@ public static class Program
                         
                         Console.WriteLine();
                         AnsiConsole.MarkupLine("[bold italic magenta]Te has teletransportado a la salida :)[/]");
-                        AnsiConsole.MarkupLine("[bold italic blue]Saque su Slime fuera del maze[/]");
+                        AnsiConsole.MarkupLine("[bold italic blue]Saque su Slime fuera del laberinto[/]");
                         Console.ReadKey();
                     }
                     if (Piece.brk == 1)

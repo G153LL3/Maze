@@ -20,7 +20,7 @@ public class piece
     id,         //identifica la ficha
     strong = 0, //para habilidad
     brk = 0;    //para la segunda trampa
-
+     
     public string ico, name, skill_desc = "None";
 
     public piece (string icon,string name = "piece")
@@ -37,7 +37,7 @@ public class piece
             dup_speed(ref sp);
         } else if(this.id == 2)
         {
-            trap_affect();
+            trap_affect();  
         } else if(this.id == 3)
         {
             this.strong = 1;

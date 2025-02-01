@@ -23,7 +23,6 @@ F:\programas\Maze\bin\Debug\net6.0\maze.exe
 F:\programas\Maze\bin\Debug\net6.0\maze.deps.json
 F:\programas\Maze\bin\Debug\net6.0\maze.runtimeconfig.json
 F:\programas\Maze\bin\Debug\net6.0\maze.dll
-F:\programas\Maze\bin\Debug\net6.0\ref\maze.dll
 F:\programas\Maze\bin\Debug\net6.0\maze.pdb
 F:\programas\Maze\bin\Debug\net6.0\Spectre.Console.dll
 F:\programas\Maze\bin\Debug\net6.0\Spectre.Console.Cli.dll
@@ -35,7 +34,6 @@ F:\programas\Maze\obj\Debug\net6.0\maze.GeneratedMSBuildEditorConfig.editorconfi
 F:\programas\Maze\obj\Debug\net6.0\maze.AssemblyInfoInputs.cache
 F:\programas\Maze\obj\Debug\net6.0\maze.AssemblyInfo.cs
 F:\programas\Maze\obj\Debug\net6.0\maze.csproj.CoreCompileInputs.cache
-F:\programas\Maze\obj\Debug\net6.0\maze.csproj.CopyComplete
 F:\programas\Maze\obj\Debug\net6.0\maze.dll
 F:\programas\Maze\obj\Debug\net6.0\ref\maze.dll
 F:\programas\Maze\obj\Debug\net6.0\maze.pdb
@@ -46,3 +44,6 @@ F:\programas\Maze\bin\Debug\net6.0\NAudio.Core.dll
 F:\programas\Maze\bin\Debug\net6.0\NAudio.Midi.dll
 F:\programas\Maze\bin\Debug\net6.0\NAudio.Wasapi.dll
 F:\programas\Maze\bin\Debug\net6.0\NAudio.WinMM.dll
+F:\programas\Maze\obj\Debug\net6.0\maze.sourcelink.json
+F:\programas\Maze\obj\Debug\net6.0\maze.csproj.Up2Date
+F:\programas\Maze\obj\Debug\net6.0\refint\maze.dll

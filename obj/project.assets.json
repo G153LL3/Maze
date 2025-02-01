@@ -18,10 +18,14 @@
           "System.Security.Principal.Windows": "4.7.0"
         },
         "compile": {
-          "ref/netstandard2.0/Microsoft.Win32.Registry.dll": {}
+          "ref/netstandard2.0/Microsoft.Win32.Registry.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/netstandard2.0/Microsoft.Win32.Registry.dll": {}
+          "lib/netstandard2.0/Microsoft.Win32.Registry.dll": {
+            "related": ".xml"
+          }
         },
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard2.0/Microsoft.Win32.Registry.dll": {
@@ -44,10 +48,14 @@
           "NAudio.WinMM": "2.2.1"
         },
         "compile": {
-          "lib/net6.0/NAudio.dll": {}
+          "lib/net6.0/NAudio.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/net6.0/NAudio.dll": {}
+          "lib/net6.0/NAudio.dll": {
+            "related": ".xml"
+          }
         }
       },
       "NAudio.Asio/2.2.1": {
@@ -57,19 +65,27 @@
           "NAudio.Core": "2.2.1"
         },
         "compile": {
-          "lib/netstandard2.0/NAudio.Asio.dll": {}
+          "lib/netstandard2.0/NAudio.Asio.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/netstandard2.0/NAudio.Asio.dll": {}
+          "lib/netstandard2.0/NAudio.Asio.dll": {
+            "related": ".xml"
+          }
         }
       },
       "NAudio.Core/2.2.1": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/NAudio.Core.dll": {}
+          "lib/netstandard2.0/NAudio.Core.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/netstandard2.0/NAudio.Core.dll": {}
+          "lib/netstandard2.0/NAudio.Core.dll": {
+            "related": ".xml"
+          }
         }
       },
       "NAudio.Midi/2.2.1": {
@@ -78,10 +94,14 @@
           "NAudio.Core": "2.2.1"
         },
         "compile": {
-          "lib/netstandard2.0/NAudio.Midi.dll": {}
+          "lib/netstandard2.0/NAudio.Midi.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/netstandard2.0/NAudio.Midi.dll": {}
+          "lib/netstandard2.0/NAudio.Midi.dll": {
+            "related": ".xml"
+          }
         }
       },
       "NAudio.Wasapi/2.2.1": {
@@ -90,10 +110,14 @@
           "NAudio.Core": "2.2.1"
         },
         "compile": {
-          "lib/netstandard2.0/NAudio.Wasapi.dll": {}
+          "lib/netstandard2.0/NAudio.Wasapi.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/netstandard2.0/NAudio.Wasapi.dll": {}
+          "lib/netstandard2.0/NAudio.Wasapi.dll": {
+            "related": ".xml"
+          }
         }
       },
       "NAudio.WinMM/2.2.1": {
@@ -103,19 +127,27 @@
           "NAudio.Core": "2.2.1"
         },
         "compile": {
-          "lib/netstandard2.0/NAudio.WinMM.dll": {}
+          "lib/netstandard2.0/NAudio.WinMM.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/netstandard2.0/NAudio.WinMM.dll": {}
+          "lib/netstandard2.0/NAudio.WinMM.dll": {
+            "related": ".xml"
+          }
         }
       },
       "Spectre.Console/0.49.1": {
         "type": "package",
         "compile": {
-          "lib/net6.0/Spectre.Console.dll": {}
+          "lib/net6.0/Spectre.Console.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/net6.0/Spectre.Console.dll": {}
+          "lib/net6.0/Spectre.Console.dll": {
+            "related": ".xml"
+          }
         }
       },
       "Spectre.Console.Cli/0.49.1": {
@@ -124,10 +156,14 @@
           "Spectre.Console": "0.49.1"
         },
         "compile": {
-          "lib/net6.0/Spectre.Console.Cli.dll": {}
+          "lib/net6.0/Spectre.Console.Cli.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/net6.0/Spectre.Console.Cli.dll": {}
+          "lib/net6.0/Spectre.Console.Cli.dll": {
+            "related": ".xml"
+          }
         },
         "resource": {
           "lib/net6.0/de/Spectre.Console.Cli.resources.dll": {
@@ -148,10 +184,14 @@
           "System.Security.Principal.Windows": "4.7.0"
         },
         "compile": {
-          "ref/netstandard2.0/System.Security.AccessControl.dll": {}
+          "ref/netstandard2.0/System.Security.AccessControl.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/netstandard2.0/System.Security.AccessControl.dll": {}
+          "lib/netstandard2.0/System.Security.AccessControl.dll": {
+            "related": ".xml"
+          }
         },
         "runtimeTargets": {
           "runtimes/win/lib/netcoreapp2.0/System.Security.AccessControl.dll": {
@@ -163,10 +203,14 @@
       "System.Security.Principal.Windows/4.7.0": {
         "type": "package",
         "compile": {
-          "ref/netcoreapp3.0/System.Security.Principal.Windows.dll": {}
+          "ref/netcoreapp3.0/System.Security.Principal.Windows.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/netstandard2.0/System.Security.Principal.Windows.dll": {}
+          "lib/netstandard2.0/System.Security.Principal.Windows.dll": {
+            "related": ".xml"
+          }
         },
         "runtimeTargets": {
           "runtimes/unix/lib/netcoreapp2.1/System.Security.Principal.Windows.dll": {
@@ -531,6 +575,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -556,16 +605,35 @@
           "net47",
           "net471",
           "net472",
-          "net48"
+          "net48",
+          "net481"
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[6.0.36, 6.0.36]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[6.0.36, 6.0.36]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[6.0.36, 6.0.36]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[6.0.36, 6.0.36]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.133\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.405\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -2,6 +2,7 @@
 using NAudio.Wave; 
 using System.Text;
 using Spectre.Console;
+using System.Security.Cryptography;
 
 
 public static class Program
@@ -153,7 +154,7 @@ public static class Program
             Selection.Decide(ref selected, pieces, i); //ver que pieces decide coger
             
         }
-        for (int i = 0; i < 6; i++) //iteramos por todas las pieces y vemos que Pieceha es de que jugador
+        for (int i = 0; i < 6; i++) //iteramos por todas las pieces y vemos que Piece es de que jugador
         { 
             pieces[i].init(); //ver funcion
             if (selected[i] == false)
@@ -165,7 +166,7 @@ public static class Program
         Traps.Trap_2(ref maze, n); //trampas
         Traps.Trap_3(ref maze, n); //trampas
 
-        Teleporter.Tele(ref maze, n); //teletranportadores 
+        Teleporter.Tele(ref maze, n); //teletransportadores 
         StringBuilder buffer = new StringBuilder(); //evitar pantallazos
 
         int last_operation = 0, turn = 1, Player = -1;
@@ -224,7 +225,7 @@ public static class Program
                 }
                 
                 string useskills = "NO";
-                if (Piece.c_time <= 0 && all_no_skill == 0)
+                if (Piece.c_time <= 0 && all_no_skill == 0) // si el tiempo de enfriamiento es 0 y si el oyro jugador no activó su habilidad que me deja sin la mía en el turno
                 {
                     AnsiConsole.MarkupLine("[bold italic blue]Escriba[/]" + "[bold italic magenta] SI [/]" + "[bold italic blue]si desea usar la habilidad de este slime en este turno y [/]" + " [bold italic magenta]NO[/] " + "[bold italic blue]en caso contario[/]");
                     useskills = Console.ReadLine();
@@ -234,7 +235,7 @@ public static class Program
                 int op = 0, res = Piece.speed;
                 for (int vel = 0; vel < res; vel ++)
                 {
-                    if (frst)
+                    if (frst)   
                     if (useskills == "SI")
                     {
                         frst = false;
@@ -242,7 +243,7 @@ public static class Program
                         Piece.skill(ref all_no_skill,ref op,ref vel,ref pieces);
                     }
                     buffer.Clear();
-                    
+
                     Show.Maze (buffer, n,turn, ref pieces, ref maze);
 
                     string mov = "Movimientos restantes: ";
@@ -275,13 +276,13 @@ public static class Program
                      
                     ConsoleKeyInfo KEY = Console.ReadKey(true);
                     if (KEY.Key == ConsoleKey.UpArrow)
-                        Piece.Move(-1, 0, n, ref maze, ref last_operation);
+                        Piece.Move(-1, 0, n, ref maze, ref last_operation, ref pieces);
                     else if (KEY.Key == ConsoleKey.DownArrow)
-                        Piece.Move(1, 0, n, ref maze, ref last_operation);
+                        Piece.Move(1, 0, n, ref maze, ref last_operation, ref pieces);
                     else if (KEY.Key == ConsoleKey.LeftArrow)
-                        Piece.Move(0, -1, n, ref maze, ref last_operation );
+                        Piece.Move(0, -1, n, ref maze, ref last_operation, ref pieces);
                     else if (KEY.Key == ConsoleKey.RightArrow)
-                        Piece.Move(0, 1, n, ref maze, ref last_operation);
+                        Piece.Move(0, 1, n, ref maze, ref last_operation, ref pieces);
                     if(last_operation < 4)
                     {
                         vel--;

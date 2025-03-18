@@ -14,8 +14,8 @@ public static class Show
                 int cnt = 0; ///cuenta la catidad de pieces
                 for (int k = 0; k < pieces.Length; k++)
                 {
-                    if (pieces[k] == null) continue;
-                    if (i == pieces[k].posX && j == pieces[k].posY) 
+                    if (pieces[k] == null) continue;        
+                    if (i == pieces[k].posX && j == pieces[k].posY) //verifica si en i,j hay una ficha
                     {
                         cnt++;
                     }
@@ -27,9 +27,9 @@ public static class Show
                     
                     if (i == pieces[k].posX && j == pieces[k].posY) // verifica si en i,j hay una ficha
                     {
-                        
+                
                         ///agrego pieces al buffer segun su color
-                        if (pieces[k].id == 1) 
+                            if (pieces[k].id == 1) 
                         {
                             buffer.Append($"[cyan]{pieces[k].ico}[/]");
                         } else if (pieces[k].id == 2)
@@ -73,16 +73,15 @@ public static class Show
                         if (maze[i,j] == "█" || maze[i,j] == " ")
                         {
                             buffer.Append(maze[i, j]);      
-                        }
+                        }   
                     } else {
                         if (i == 0 && j == 2) 
                         {
-                            buffer.Append(" ");
+                           buffer.Append(" ");
                         }
                         pos_full = 0;
                     }
                 }  
-                
             }
             buffer.AppendLine();        
         }

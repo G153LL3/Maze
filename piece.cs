@@ -79,11 +79,21 @@ public class piece
         }
     }
     //lstop como llevar 3 bool es last operation
-    public void Move (int deltaX, int deltaY, int n, ref string[,] maze, ref int lstop)
-    {
+    public void Move (int deltaX, int deltaY, int n, ref string[,] maze, ref int lstop, ref piece[] pieces)
+    {   
         int newposX = this.posX + deltaX;
         int newposY = this.posY + deltaY;
-        if (newposX >= 0 && newposX < n+1 && newposY >= 0 && newposY < n+1 && (maze[newposX, newposY] != "█" || this.strong == 1))
+        int cnt = 0; ///cuenta la catidad de pieces
+        for (int k = 0; k < pieces.Length; k++)
+        {
+            if (pieces[k] == null) continue;        
+            if ( newposX == pieces[k].posX && newposY == pieces[k].posY) //verifica si hay una ficha
+            {
+                cnt++;
+            }
+        }
+
+        if (newposX >= 0 && newposX < n+1 && newposY >= 0 && newposY < n+1 && (maze[newposX, newposY] != "█" || this.strong == 1)&& cnt <=1)
         {
             lstop ^= 4; 
             this.posX = newposX;
@@ -140,7 +150,21 @@ public class piece
             if (player == pieces[i].player) continue;
             Show.Slimes(pieces[i].id);
         }
-        return int.Parse(Console.ReadLine())-1;
+        while (true) 
+        {
+            int slime_select= int.Parse(Console.ReadLine())-1;
+            for(int i = 0; i < pieces.Length; i++)
+            {
+                if (pieces[i] == null) continue; 
+                if (player == pieces[i].player) continue;
+                if (pieces[i].id == slime_select)
+                {
+                    return slime_select;
+                    break;
+                }
+            }
+            AnsiConsole.MarkupLine("[bold italic blue]Opción inválida[/]");
+        }
     }
     public void Frozen(ref int rcp)
     { // congela un slime

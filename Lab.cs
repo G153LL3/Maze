@@ -11,13 +11,13 @@ public static class Lab
     }
     
     public static void dfs (int n, int i, int j, ref bool[,] vis, ref  int[,] lab ,int p1 = -10000, int p2 = -10000)
-    {
+    {   
         if (outt(i, j, n)) return;
 
         vis[i, j] = true;
         int[] x = {0, 0, 2,-2};
         int[] y = {2,-2, 0, 0};
-        int[] ok = {0, 0, 0, 0};
+        int[] ok = {0, 0, 0, 0}; //verifica si ya me movi en una direccion
         
         for (int l = 0; l < 100; l++) 
         {
@@ -55,6 +55,7 @@ public static class Lab
                         dfs(n, i, j-2, ref vis, ref lab, i, j);
                     }
                     continue;
+                
                 }
                 
                 if (z <= 75)
@@ -80,8 +81,7 @@ public static class Lab
                         dfs(n, i-2, j, ref vis, ref lab, i, j);
                     }
                     continue;
-                }
-                
+                }   
         }
 
     }

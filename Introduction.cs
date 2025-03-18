@@ -56,7 +56,7 @@ public static class Introduction
             BorderStyle= new Style(Color.Blue) 
         };
          AnsiConsole.Write(panel_2); 
-
+    
         Console.WriteLine(" ");
         AnsiConsole.MarkupLine("[bold magenta]Presione cualquier tecla para continuar[/]");
         Console.ReadKey();

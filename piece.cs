@@ -97,7 +97,7 @@ public class piece
         {
             lstop ^= 4; 
             this.posX = newposX;
-            this.posY = newposY;
+            posY = newposY;
             if (maze[this.posX, this.posY] == "█") maze[this.posX, this.posY] = " ";
             if (maze[this.posX, this.posY] == "🐢" && t_affect > 0)
             {
@@ -144,27 +144,7 @@ public class piece
     public int Begin(ref piece[] pieces)
     { // mueve una ficha del rival al inicio
         AnsiConsole.MarkupLine("[bold italic blue]Diga que ficha desea mover al inicio[/]");
-        for(int i = 0; i < pieces.Length; i++)
-        {
-            if (pieces[i] == null) continue; 
-            if (player == pieces[i].player) continue;
-            Show.Slimes(pieces[i].id);
-        }
-        while (true) 
-        {
-            int slime_select= int.Parse(Console.ReadLine())-1;
-            for(int i = 0; i < pieces.Length; i++)
-            {
-                if (pieces[i] == null) continue; 
-                if (player == pieces[i].player) continue;
-                if (pieces[i].id == slime_select)
-                {
-                    return slime_select;
-                    break;
-                }
-            }
-            AnsiConsole.MarkupLine("[bold italic blue]Opción inválida[/]");
-        }
+        return int.Parse(Console.ReadLine())-1;
     }
     public void Frozen(ref int rcp)
     { // congela un slime
